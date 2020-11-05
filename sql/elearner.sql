@@ -11,9 +11,8 @@ CREATE TABLE `users` (
 	`userId` mediumint(9) NOT NULL,
 	`username` varchar(10) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
 	`password` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-	`email` varchar(500) COLLATE utf8_unicode_ci,
-	`gender` varchar(100) COLLATE utf8_unicode_ci,
-	`gradeLvl` mediumint(9) NOT NULL
+-- 	`gradeLvl` mediumint(9) NOT NULL,
+	`background` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
