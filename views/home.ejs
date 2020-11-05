@@ -1,12 +1,30 @@
 <%- include ('templates/header'); -%>
-    <div class='container'>
-        	<div class='jumbotron'>
-        		<h3 class = "title"> E-Learner </h3> 
-        		<br><br>
-        		<a class='button btn' href='/login'>Login</a>
-        		<a class='button btn' href='/register'>Register</a>
-        	</div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand">Elearner</a>
         </div>
-        
-        <a class='button btn' href='/adminLogin'>Admin</a>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="/">Home</a></li>
+          <li><a href='/adminLogin'>Admin</a></li>
+          <li><a href="#">About</a></li>
+          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grades <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="#">1st Grade</a></li>
+              <li><a href="#">2nd Grade</a></li>
+              <li><a href="#">3rd Grade</a></li>
+              <li><a href="#">4th Grade</a></li>
+              <li><a href="#">5th Grade</a></li>
+              <li><a href="#">6th Grade</a></li>
+            </ul>
+          </li>
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href='/register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+          <li><a href='/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        </ul>
+      </div>
+    </nav>
+
 <%- include ('templates/footer'); -%>
