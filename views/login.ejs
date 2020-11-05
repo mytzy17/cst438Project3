@@ -1,6 +1,31 @@
 <%- include ('templates/header'); -%>
-
-
-
-
+    <div class='jumbotron'>
+        		<h3 class="title"> E-Learner </h3> <br>
+        		<h3 class='liltitle'> Login </h3>
+        		<i class="fas fa-cheese"></i>
+        		<a class='button btn' href='/'>Home</a>
+        </div>
+    <div class='container'>
+        	<form action='/login' method='POST'>
+        		<div class='form-group row'>
+        			<label for='username' class='col-sm-2 col-form-label'>Username</label>
+        			<div class='col-sm-4'>
+        				<input type='text' class='form-control' id='username' name='username' placeholder='username' required>
+        			</div>
+        		</div>
+        		<div class='form-group row'>
+        			<label for='password' class='col-sm-2 col-form-label'>Password</label>
+        			<div class='col-sm-4'>
+        				<input type='password' class='form-control' id='password' name='password' placeholder='****' required>
+        			</div>
+        		</div>
+        		<div class='form-group row'>
+        			<div class='col-sm-4'></div>
+        			<div class='col-sm-4'>
+        				<button class='btn btn-primary btn-block'>Login</button>
+        			</div>
+        			<div class='col-sm-4'></div>
+        		</div>
+        	</form>
+        </div>
 <%- include ('templates/footer'); -%>
