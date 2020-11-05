@@ -21,7 +21,7 @@ CREATE TABLE `users` (
 --
 DROP TABLE IF EXISTS `totalQuestions`;
 CREATE TABLE `totalQuestions` (
-  `questionsId` mediumint(97) NOT NULL,
+  `questionId` mediumint(97) NOT NULL,
   `difficulty` mediumint(97) DEFAULT NULL,
   `category` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   `image` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
@@ -39,7 +39,7 @@ INSERT INTO `users` (`userId`, `username`, `password`, `email`, `gender`, `grade
 --
 -- Insertion for table `totalQuestions`
 --
-INSERT INTO `totalQuestions` (`questionsId`, `difficulty`, `category`, `image`, `question`, `gradeLvl`) VALUES
+INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `question`, `gradeLvl`) VALUES
 --
 
 
