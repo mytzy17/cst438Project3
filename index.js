@@ -7,6 +7,9 @@ var session = require('express-session');
 var bcrypt = require('bcrypt');
 var app = express();
 
+//admin credentials
+var adminUser = "XXXTentacles";
+var adminPassword = "Gayball";
 
 app.use(express.static('css'));
 app.use(express.static('public'));
@@ -51,6 +54,32 @@ function checkUsername(username){
        }); 
     });
 }
+
+/* check if password matches username */
+function checkPassword(password, hash){
+    return new Promise(function(resolve, reject){
+       bcrypt.compare(password, hash, function(error, result){
+          if(error) throw error;
+          resolve(result);
+       }); 
+    });
+}
+
+app.get('/adminlogin',function(req, res) {
+    res.render('adminlogin');
+});
+
+app.post('/adminlogin', function(req, res) {
+    if(req.body.adminName == adminUser && req.body.adminPW == adminPassword) {
+        res.redirect('/admin');
+    } else {
+        res.redirect('/');
+    }
+});
+
+app.get('/admin', function(req, res) {
+    res.render('admin');
+})
 
 // Home route
 app.get('/', function(req, res){

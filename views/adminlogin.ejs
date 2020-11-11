@@ -1,0 +1,21 @@
+<%- include ('templates/header'); -%>
+    <div class='container'>
+        <div class='jumbotron'>
+        		<h3 class = "title"> Chees O </h3>
+        		<a class='button btn' href='/'>Logout</a>
+        		<br>
+        		<h5 id = 'welcome'>Welcome, Admin! </h5>
+        </div>
+        
+        <form action='/adminLogin' method='POST'>
+            <div class='col-sm-4'>
+    			<input type='text' class='form-control' id='adminName' name='adminName' placeholder='username' required>
+    		</div>
+    		
+    		<div class='col-sm-4'>
+    			<input type='text' class='form-control' id='adminPW' name='adminPW' placeholder='password' required>
+    		</div>
+    		<button class='btn btn-primary btn-block'>Login</button>
+		</form>
+    </div>
+<%- include ('templates/footer'); -%>
