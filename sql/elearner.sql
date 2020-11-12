@@ -31,11 +31,11 @@ CREATE TABLE `totalQuestions` (
 --
 -- Table structure for table `totalAnswers`
 --
-DROP TABLE IF EXISTS `totalAnswers`;
-CREATE TABLE `totalAnswers` (
-	`questionId` mediumint(9) NOT NULL,
-	`answer` varchar(25) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+-- DROP TABLE IF EXISTS `totalAnswers`;
+-- CREATE TABLE `totalAnswers` (
+-- 	`questionId` mediumint(9) NOT NULL,
+-- 	`answer` varchar(25) COLLATE utf8_unicode_ci NOT NULL
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- --
 -- -- Insertion for table `users`
@@ -60,24 +60,24 @@ INSERT INTO `users` (`userId`, `username`, `password`, `background`) VALUES
 --
 -- Insertion for table `totalQuestions`
 --
-INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `question`, `gradeLvl`) VALUES
-(1, 5, 'Math', '', '5 + 3 = _ + 7', 1),
-(2, 6, 'Science', '', 'What part of a bone builds new blood cells? a. Joints b. Bone marrow c. Spongy bone d. Compact bone', 3),
-(3, 3, 'English', '', 'Which letters BEST complete the word? spar_____ a. kle b. kle c. kele', 1),
-(4, 9, 'Math', '', '524 + 633 = ', 2),
-(5, 8, 'Englsh', '', 'A person who is shy probably does NOT? a. talk a lot. b. like animals. c. have any friends. d. get along with people.', 4),
-(6, 1, 'Science', '', 'Which law says that an object in motion will stay in motion unless another forces changes that? a. First law b. Second law c. Third law d. All', 5),
+INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `question`, `answer`, `gradeLvl`) VALUES
+(1, 5, 'Math', '', '5 + 3 = _ + 7', '1', 1),
+(2, 6, 'Science', '', 'What part of a bone builds new blood cells? a. Joints b. Bone marrow c. Spongy bone d. Compact bone', 'b', 3),
+(3, 3, 'English', '', 'Which letters BEST complete the word? spar____ a. kle b. kel c. kele', 'a', 1),
+(4, 9, 'Math', '', '524 + 633 = ', '1157', 2),
+(5, 8, 'Englsh', '', 'A person who is shy probably does NOT? a. talk a lot. b. like animals. c. have any friends. d. get along with people.', 'a', 4),
+(6, 1, 'Science', '', 'Which law says that an object in motion will stay in motion unless another forces changes that? a. First law b. Second law c. Third law d. All', 'a', 5),
 
 --
 -- Insertion for table `totalAnswers`
 --
-INSERT INTO `totalAnswers` (`questionId`, `answer`) VALUES
-(1, '1'),
-(2, 'b'),
-(3, 'a'),
-(4, '1157'),
-(5, 'a'),
-(6, 'a');
+-- INSERT INTO `totalAnswers` (`questionId`, `answer`) VALUES
+-- (1, '1'),
+-- (2, 'b'),
+-- (3, 'a'),
+-- (4, '1157'),
+-- (5, 'a'),
+-- (6, 'a');
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`);
