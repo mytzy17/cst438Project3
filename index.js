@@ -81,6 +81,17 @@ app.get('/admin', function(req, res) {
     res.render('admin');
 })
 
+app.post('/adminadd', function(req, res) {
+    var addQuestionStmt = 'INSERT INTO totalQuestions values (?, ?, ?, ?, ?, ?)';
+    let data = [req.body.newDiff, req.body.newCate, req.body.newQuestionImg, req.body.newQuestion, req.body.newAnswer, req.body.newGradeLvl];
+    
+    connection.query(addQuestionStmt, data, function(err, result) {
+        if(err) throw err;
+        res.redirect('/admin');
+    })
+})
+
+
 // Home route
 app.get('/', function(req, res){
     res.render('home');

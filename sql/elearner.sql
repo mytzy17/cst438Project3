@@ -23,8 +23,9 @@ CREATE TABLE `totalQuestions` (
   `questionId` mediumint(97) NOT NULL,
   `difficulty` mediumint(10) DEFAULT NULL,
   `category` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
-  `image` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `image` varchar(200) COLLATE utf8_unicode_ci,
   `question` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+  `answer` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
   `gradeLvl` mediumint(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
