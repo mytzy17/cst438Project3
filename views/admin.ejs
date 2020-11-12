@@ -1,11 +1,11 @@
 <%- include ('templates/header'); -%>
     Welcome Admin!
-    <form action='/admin' method='POST'>
+    <form action='/adminadd' method='POST'>
         <div class="row">
             <div class="col-md-offset-5 col-md-2 text-center">
                 <h1 class='text-white'>Add Question</h1>
                     <div><br>
-                        <label for="newQuestionImg">Choose a difficulty:</label><br>
+                        <label for="newDiff">Choose a difficulty:</label><br>
                         <input type="number" id="newDiff" name="newDiff" min="1" max="10" required><br>
                         <label for="newCate">Choose a category for the new Question:</label><br>
                         <select id="newCate" name="newCate" required>
