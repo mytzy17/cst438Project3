@@ -1,3 +1,29 @@
 <%- include ('templates/header'); -%>
-    ADMIN PAGE
+    Welcome Admin!
+    <form action='/admin' method='POST'>
+        <div class="row">
+            <div class="col-md-offset-5 col-md-2 text-center">
+                <h1 class='text-white'>Add Question</h1>
+                    <div><br>
+                        <label for="newQuestionImg">Choose a difficulty:</label><br>
+                        <input type="number" id="newDiff" name="newDiff" min="1" max="10" required><br>
+                        <label for="newCate">Choose a category for the new Question:</label><br>
+                        <select id="newCate" name="newCate" required>
+                            <option value="Math">Math</option>
+                            <option value="Science">Science</option>
+                            <option value="English">English</option>
+                        </select><br>
+                        <label for="newQuestionImg">Choose an image for the new Question (Not Required):</label><br>
+                        <input type="text" id="newQuestionImg" name = "newQuestionImg" placeholder="Enter IMG URL"><br>
+                        <label for="newQuestion">Type your question out</label><br>
+                        <input type="text" id="newQuestion" name = "newQuestion" placeholder="Enter your question" required><br>
+                        <label for="newAnswer">Type your Answer</label><br>
+                        <input type="text" id="newAnswer" name = "newAnswer" placeholder="Enter your answer" required><br>
+                        <label for="newGradeLvl">Choose grade level</label><br>
+                        <input type="number" id="newGradeLvl" name="newGradeLvl" min="1" max="6" required><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
 <%- include ('templates/footer'); -%>
