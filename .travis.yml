@@ -1,9 +1,15 @@
 #Travis.yaml file for node.js
 language: node_js
-node_js:
-  - "node"
-
 sudo: false
+node_js:
+  - 10
+  - 9 
+  - 8
+  - 7
+
+install:
+  - npm install 
+
 var http = require('http');
 http.createServer(function (req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
@@ -23,3 +29,6 @@ console.log('server started');
     "test": "jshint index.js"
   }
 }
+
+script:
+  - npm test
