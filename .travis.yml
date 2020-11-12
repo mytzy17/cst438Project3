@@ -10,25 +10,5 @@ node_js:
 install:
   - npm install 
 
-var http = require('http');
-http.createServer(function (req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Travis test')
-}).listen(1337, '127.0.0.1');
-console.log('server started');
-
-{
-  "name": "mytzy",
-  "description": "Travis to check connection",
-  "author": "mytzy",
-  "version": "0.0.1",
-  "devDependencies": {
-    "jshint": "^2.6.0"
-  },
-  "scripts": {
-    "test": "jshint index.js"
-  }
-}
-
 script:
   - npm test
