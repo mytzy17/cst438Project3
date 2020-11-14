@@ -67,7 +67,7 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 (3, 3, 'English', '', 'Which letters BEST complete the word? spar____ a. kle b. kel c. kele', 'a', 1),
 (4, 9, 'Math', '', '524 + 633 = ', '1157', 2),
 (5, 8, 'Englsh', '', 'A person who is shy probably does NOT? a. talk a lot. b. like animals. c. have any friends. d. get along with people.', 'a', 4),
-(6, 1, 'Science', '', 'Which law says that an object in motion will stay in motion unless another forces changes that? a. First law b. Second law c. Third law d. All', 'a', 5),
+(6, 1, 'Science', '', 'Which law says that an object in motion will stay in motion unless another forces changes that? a. First law b. Second law c. Third law d. All', 'a', 5);
 
 --
 -- Insertion for table `totalAnswers`
@@ -83,13 +83,13 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`);
 ALTER TABLE `totalQuestions`
-  ADD PRIMARY KEY (`questionsId`);
+  ADD PRIMARY KEY (`questionId`);
 -- ALTER TABLE `totalAnswers`
 --   ADD PRIMARY KEY (`questionsId`);
 
 ALTER TABLE `users`
   MODIFY `userId` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 ALTER TABLE `totalQuestions`
-  MODIFY `questionsId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `questionId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
   
 COMMIT;
