@@ -1,28 +1,35 @@
-<%- include ('header'); -%>
-    <nav class="navbar navbar navbar-dark bg-success navbar-expand-lg navbar-fixed-top">
+    <nav class="navbar navbar-inverse navbar-expand-lg navbar-fixed-top">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" class="titlenav">E-Learner</a>
+          <a class="navbar-brand">E-Learner</a>
         </div>
         <ul class="nav navbar-nav">
           <li class="active"><a href="/">Home</a></li>
-          <li><a href='/adminLogin'>Admin</a></li>
           <li><a href="/about">About</a></li>
-          <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Grades <span class="caret"></span></a>
-            <ul class="dropdown-menu">
-              <li><a href="#">1st Grade</a></li>
-              <li><a href="#">2nd Grade</a></li>
-              <li><a href="#">3rd Grade</a></li>
-              <li><a href="#">4th Grade</a></li>
-              <li><a href="#">5th Grade</a></li>
-              <li><a href="#">6th Grade</a></li>
-            </ul>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Grades
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">1st Grade</a>
+              <a class="dropdown-item" href="#">2nd Grade</a>
+              <a class="dropdown-item" href="#">3rd Grade</a>
+              <a class="dropdown-item" href="#">4th Grade</a>
+              <a class="dropdown-item" href="#">5th Grade</a>
+              <a class="dropdown-item" href="#">6th Grade</a>
+            </div>
           </li>
-          
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a href='/register'><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
           <li><a href='/login'><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href='/adminlogin'>Admin</a></li>
         </ul>
       </div>
     </nav>
+    
+    
