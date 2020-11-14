@@ -126,3 +126,7 @@ h4 {
 .banner .info a:hover{
 	background: #e91e63;
 }
+
+.addQform {
+	background-color: white;
+}

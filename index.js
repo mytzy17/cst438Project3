@@ -32,9 +32,9 @@ app.set('view engine', 'ejs');
 
 const connection = mysql.createConnection({
     host: 'localhost',
-    user: 'mytzy', // these probably need to be changed
-    password: 'mytzy', // these probably need to be changed
-    database: 'cheese', // these probably need to be changed
+    user: 'roob', // these probably need to be changed
+    password: 'roob', // these probably need to be changed
+    database: 'elearner', // these probably need to be changed
     multipleStatements: true
 });
 // connection.connect(); // This is for JAawsDB
@@ -78,14 +78,27 @@ app.post('/adminlogin', function(req, res) {
 });
 
 app.get('/admin', function(req, res) {
-    res.render('admin');
+    var stmt = "SELECT * FROM totalQuestions;";
+    connection.query(stmt, function(err, result){
+        if(err) throw err;
+        let listOfQuestions = result;
+        console.log(listOfQuestions);
+        res.render('admin', {listOfQs: listOfQuestions});
+    })
 })
 
 app.post('/adminadd', function(req, res) {
-    var addQuestionStmt = 'INSERT INTO totalQuestions values (?, ?, ?, ?, ?, ?)';
-    let data = [req.body.newDiff, req.body.newCate, req.body.newQuestionImg, req.body.newQuestion, req.body.newAnswer, req.body.newGradeLvl];
-    
+    var addQuestionStmt = 'INSERT INTO totalQuestions (difficulty, category, image, question, answer, gradeLvl) VALUES (?, ?, ?, ?, ?, ?);';
+    let newDiff = parseInt(req.body.newDiff);
+    let newImg = "";
+    let newGradeLvl = parseInt(req.body.newGradeLvl);
+    if (req.body.newQuestionImg.length != 0) {
+        newImg = req.body.newQuestionImg;
+    }
+    let data = [newDiff, req.body.newCate, newImg, req.body.newQuestion, req.body.newAnswer, newGradeLvl];
+    console.log(data);
     connection.query(addQuestionStmt, data, function(err, result) {
+        console.log(addQuestionStmt);
         if(err) throw err;
         res.redirect('/admin');
     })
