@@ -1,8 +1,7 @@
 <%- include ('templates/header'); -%>
     Welcome Admin!
-    <body id= "backgroundLogin">
-        
-        <button id="questionBtn">List of Questions</button>
+        <br>
+        <button id="questionBtn" style="margin-left: 165px;">List of Questions</button>
         
         <!-- The Modal -->
         <div id="questionModal" class="modal">
@@ -11,14 +10,14 @@
             <span class="close">&times;</span>
             <div class='form-group row'>
                 <% listOfQs.forEach(function(q) { %>
-                    <div class='col-sm-2'>
-                        <h5>ID: <%=q.questionId%></h5><br>
-                        <h5>Diff: <%=q.difficulty%></h5><br>
-                        <h5>Cat: <%=q.category%></h5><br>
+                    <div class='col-sm-2 questionsListEntry'>
+                        <h5>ID: <%=q.questionId%></h5>
+                        <h5>Diff: <%=q.difficulty%></h5>
+                        <h5>Cat: <%=q.category%></h5>
                         <h5>Img: <%=q.image%></h5><br>
-                        <h5>Question: <%=q.question%></h5><br>
-                        <h5>Answer: <%=q.answer%></h5><br>
-                        <h5>Grade Level: <%=q.gradeLvl%></h5><br>
+                        <h5>Question: <%=q.question%></h5>
+                        <h5>Answer: <%=q.answer%></h5>
+                        <h5>Grade Level: <%=q.gradeLvl%></h5>
                     </div>
                 <% }); %>
             </div>
@@ -28,7 +27,7 @@
         <form action='/adminadd' method='POST' class="addQform">
             <div class="row">
                 <div class="col-md-offset-1 col-md-2">
-                    <h1 class='text-white'>Add Question</h1>
+                    <h1>Add Question</h1>
                         <div><br>
                             <label for="newDiff">Choose a difficulty:</label><br>
                             <input type="number" id="newDiff" name="newDiff" min="1" max="10" required><br>
@@ -49,8 +48,22 @@
                         </div>
                     </div>
                 </div>
+                <button class="custombtn" style="margin-left: 165px;">Add Question</button>
             </div>
-            <button class="button">Add Question</button>
+        </form>
+        
+        <form action='/admindelete' method='POST' class="addQform">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-2">
+                    <h1>Delete Question Question</h1>
+                        <div><br>
+                            <label for="newDiff">Input the questionId of the question you want to delete:</label><br>
+                            <input type="number" id="questionIdDelete" name="questionIdDelete" min="1" required><br>
+                        </div>
+                    </div>
+                </div>
+                <button class="custombtn" style="margin-left: 165px;">Delete Question</button>
+            </div>
         </form>
         
         <script>
@@ -80,5 +93,4 @@
               }
             }
         </script>
-    </body>
 <%- include ('templates/footer'); -%>
