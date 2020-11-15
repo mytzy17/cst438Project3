@@ -7,8 +7,8 @@ li {
   background-size:cover;
   
   -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-  font-family: 'Dancing Script', cursive!important;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
 }
 .container {
     padding: 110px;
@@ -60,18 +60,20 @@ h4 {
   background-size:cover;
   
   -webkit-font-smoothing: antialiased;
-  font: normal 14px Roboto,arial,sans-serif;
-  font-family: 'Dancing Script', cursive!important;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
 }
-.titlenav{
-    
+#titlenav{
+    font-family: 'Flavors', cursive;
+    font-size: 2.5em;
 }
 #backgroundHome{
 	margin:0;
 	padding:0;
 	background:#fff;
-	font-family: 'Raleway',sans-serif;
+	font-family: 'Mansalva', cursive;
 	color: #fff;
+	font-size: 20px;
 }
 .banner{
 	height: 100vh;
@@ -185,4 +187,16 @@ h4 {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+}
+#backgroundAdminLogin{
+  background-image:url('https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/vivid-acrylic-collage-landscape-joi-at-the-ranch.jpg');
+  background-position:center;
+  background-size:cover;
+  
+  -webkit-font-smoothing: antialiased;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
+}
+.smoltitle{
+    font-size:50px;
 }

@@ -1,56 +1,12 @@
 <%- include ('templates/header'); -%>
-<!--<div class='container'>-->
-<!--	<div class='jumbotron'>-->
-<!--		<h3 class="title"> E-Learner </h3> <br>-->
-<!--		<h3 class='liltitle'> User Registration </h3>-->
-<!--        		<i class="fas fa-cheese"></i>-->
-<!--		<a class='button btn' href='/'>Home</a>-->
-<!--	</div>-->
-	
-<!--	<form action='/register' method='POST'>-->
-<!--		<div class='form-group row' class='medTitle' >-->
-			<!--<a class ='.medTitle'>-->
-<!--				<label for='email' class='col-sm-2 col-form-label'>Email</label>-->
-<!--				<div class='col-sm-4'>-->
-<!--					<input type='text' class='form-control' id='email' name='email' placeholder='email' required>-->
-<!--					<h4 id='takenEmail' name='takenEmail'></h4>-->
-<!--				</div>-->
-			<!--</a>-->
-<!--		</div>-->
-<!--		<div class='form-group row' class='medTitle' >-->
-			<!--<a class ='.medTitle'>-->
-<!--				<label for='username' class='col-sm-2 col-form-label'>Username</label>-->
-<!--				<div class='col-sm-4'>-->
-<!--					<input type='text' class='form-control' id='username' name='username' placeholder='username' required>-->
-<!--				</div>-->
-			<!--</a>-->
-<!--		</div>-->
-<!--		<div class='form-group row' class='.medTitle'>-->
-<!--			<label for='password' class='col-sm-2 col-form-label'>Password</label>-->
-<!--			<div class='col-sm-4'>-->
-<!--				<input type='password' class='form-control' id='password' name='password' placeholder='****' required>-->
-<!--			</div>-->
-<!--		</div>-->
-		
-<!--		<div class='form-group row'>-->
-<!--			<div class='col-sm-4'></div>-->
-<!--			<div class='col-sm-4'>-->
-<!--				<i class="fas fa-cheese"></i>-->
-<!--				<button class='button btn'>Register</button>-->
-<!--			</div>-->
-<!--			<div class='col-sm-4'></div>-->
-<!--		</div>-->
-<!--	</form>-->
-<!--</div>-->
 <%- include ('templates/navbar'); -%>
 <body id="backgroundRegister">
     <div class="container">
     <form action='/register' method='POST'>
         <div class="row">
-            <div class="col-md-offset-5 col-md-4 text-center">
-                <h1 class='text-white'>Register Account</h1>
+            <div class="col-md-offset-4 col-md-4 text-center">
                   <div class="form-login"></br>
-                    <h4>Input Credentials</h4>
+                    <h4 class="smoltitle">Register</h4>
                     </br>
                     <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
                     <br><br>
@@ -60,7 +16,7 @@
                     </br></br>
                     <div class="wrapper">
                             <span class="group-btn">
-                                <a class="btn btn-danger btn-md">register <i class="fa fa-sign-in"></i></a>
+                                <a class="btn btn-danger btn-lg">register <i class="fa fa-sign-in"></i></a>
                             </span>
                     </div>
                 </div>
