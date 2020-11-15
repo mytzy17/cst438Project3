@@ -164,6 +164,10 @@ app.post('/register', async function(req, res){
     });
 });
 
+/* About Routes */
+app.get('/about', function(req, res){
+    res.render('about');
+});
 
 
 /* Logout Route */
