@@ -104,6 +104,13 @@ app.post('/adminadd', function(req, res) {
     })
 })
 
+app.post('/admindelete', function(req, res) {
+   var deleteQuestionStmt = "DELETE FROM totalQuestions WHERE questionId = " + req.body.questionIdDelete;
+   connection.query(deleteQuestionStmt, function(err, result) {
+      if(err) throw err;
+      res.redirect('/admin'); 
+   });
+});
 
 // Home route
 app.get('/', function(req, res){
