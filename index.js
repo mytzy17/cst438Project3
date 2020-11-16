@@ -124,7 +124,7 @@ app.get('/login', function(req, res){
 
 /* Add login post method */
 app.post('/login', async function(req, res){
-    let isUserExist   = await checkUsername(req.body.username);
+    let isUserExist  = await checkUsername(req.body.username);
     console.log(isUserExist[0]);
     let hashedPasswd  = isUserExist.length > 0 ? isUserExist[0].password : '';
     let passwordMatch = await checkPassword(req.body.password, hashedPasswd);
@@ -136,7 +136,7 @@ app.post('/login', async function(req, res){
         console.log("authenticated: " + req.session.authenticated);
         console.log("username: " + req.session.user);
         console.log("ID: " + req.session.user_id);
-        res.redirect('/inventory');
+        res.redirect('/home');
     }
     else{
         console.log("error:::");
@@ -152,12 +152,13 @@ app.get('/register', function(req, res){
 /* Register Post Method */
 app.post('/register', async function(req, res){
     let salt = 10;
-    bcrypt.hash(req.body.password, salt, function(error, hash){
+    let newPassword = req.body.password.toString();
+    bcrypt.hash(newPassword, salt, function(error, hash){
         if(error) throw error;
-        let stmt = 'INSERT INTO users (username, password, email, gender, address) VALUES (?, ?, ?, ?, ?)';
-        let data = [req.body.username, hash, req.body.email, '', ''];
+        let stmt = 'INSERT INTO users (username, password, email) VALUES (?, ?, ?);';
+        let data = [req.body.username, hash, req.body.email];
         connection.query(stmt, data, function(err, result){
-            console.log(stmt)
+            console.log(stmt);
            if(err) throw err;
            res.redirect('/login');
         });
