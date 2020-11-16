@@ -1,14 +1,18 @@
+<%- include ('templates/header'); -%>
 <%- include ('templates/navbar'); -%>
-
-    <div class='container'>
-    	<div class='jumbotron'>
-    		<h1 class = "title"> ELearner </h1> <img id= "mouse" src= "https://img.abcmouse.com/fb/ABCmouse.jpg">
-    		<br><br>
-    		<a class='btn btn-primary' href='/login'>Login</a>
-    		<a class='btn btn-primary' href='/register'>Register</a>
-    	</div>
-    </div>
-        
-    <a class='btn btn-primary' href='/adminLogin'>Admin Login</a>
+<body id = "backgroundHome">
+    <div class="container-fluid banner">
+		<div class="row">
+			<div class="col-md-8 offset-md-2 info" style="background-color:rgba(0,0,0,0.5);">
+				<h1 style="color:white"class="text-center">Educational Quizzes</h1>
+				<p style="color:white"class="text-center">
+					Practice Your Skills
+				</p>
+				<a href="/register" class="btn btn-md text-center">GET STARTED</a>
+				<br><br>
+			</div>
+		</div>
+	</div>
+</body>
 
 <%- include ('templates/footer'); -%>

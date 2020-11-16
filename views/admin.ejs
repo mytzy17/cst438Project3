@@ -1,29 +1,96 @@
 <%- include ('templates/header'); -%>
     Welcome Admin!
-    <form action='/adminadd' method='POST'>
-        <div class="row">
-            <div class="col-md-offset-5 col-md-2 text-center">
-                <h1 class='text-white'>Add Question</h1>
-                    <div><br>
-                        <label for="newDiff">Choose a difficulty:</label><br>
-                        <input type="number" id="newDiff" name="newDiff" min="1" max="10" required><br>
-                        <label for="newCate">Choose a category for the new Question:</label><br>
-                        <select id="newCate" name="newCate" required>
-                            <option value="Math">Math</option>
-                            <option value="Science">Science</option>
-                            <option value="English">English</option>
-                        </select><br>
-                        <label for="newQuestionImg">Choose an image for the new Question (Not Required):</label><br>
-                        <input type="text" id="newQuestionImg" name = "newQuestionImg" placeholder="Enter IMG URL"><br>
-                        <label for="newQuestion">Type your question out</label><br>
-                        <input type="text" id="newQuestion" name = "newQuestion" placeholder="Enter your question" required><br>
-                        <label for="newAnswer">Type your Answer</label><br>
-                        <input type="text" id="newAnswer" name = "newAnswer" placeholder="Enter your answer" required><br>
-                        <label for="newGradeLvl">Choose grade level</label><br>
-                        <input type="number" id="newGradeLvl" name="newGradeLvl" min="1" max="6" required><br>
+        <br>
+        <button id="questionBtn" style="margin-left: 165px;">List of Questions</button>
+        
+        <!-- The Modal -->
+        <div id="questionModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class='form-group row'>
+                <% listOfQs.forEach(function(q) { %>
+                    <div class='col-sm-2 questionsListEntry'>
+                        <h5>ID: <%=q.questionId%></h5>
+                        <h5>Diff: <%=q.difficulty%></h5>
+                        <h5>Cat: <%=q.category%></h5>
+                        <h5>Img: <%=q.image%></h5><br>
+                        <h5>Question: <%=q.question%></h5>
+                        <h5>Answer: <%=q.answer%></h5>
+                        <h5>Grade Level: <%=q.gradeLvl%></h5>
+                    </div>
+                <% }); %>
+            </div>
+          </div>
+        </div>
+                
+        <form action='/adminadd' method='POST' class="addQform">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-2">
+                    <h1>Add Question</h1>
+                        <div><br>
+                            <label for="newDiff">Choose a difficulty:</label><br>
+                            <input type="number" id="newDiff" name="newDiff" min="1" max="10" required><br>
+                            <label for="newCate">Choose a category for the new Question:</label><br>
+                            <select id="newCate" name="newCate" required>
+                                <option value="Math">Math</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                            </select><br>
+                            <label for="newQuestionImg">Choose an image for the new Question (Not Required):</label><br>
+                            <input type="text" id="newQuestionImg" name = "newQuestionImg" placeholder="Enter IMG URL"><br>
+                            <label for="newQuestion">Type your question out</label><br>
+                            <input type="text" id="newQuestion" name = "newQuestion" placeholder="Enter your question" required><br>
+                            <label for="newAnswer">Type your Answer</label><br>
+                            <input type="text" id="newAnswer" name = "newAnswer" placeholder="Enter your answer" required><br>
+                            <label for="newGradeLvl">Choose grade level</label><br>
+                            <input type="number" id="newGradeLvl" name="newGradeLvl" min="1" max="6" required><br>
+                        </div>
                     </div>
                 </div>
+                <button class="custombtn" style="margin-left: 165px;">Add Question</button>
             </div>
-        </div>
-    </form>
+        </form>
+        
+        <form action='/admindelete' method='POST' class="addQform">
+            <div class="row">
+                <div class="col-md-offset-1 col-md-2">
+                    <h1>Delete Question Question</h1>
+                        <div><br>
+                            <label for="newDiff">Input the questionId of the question you want to delete:</label><br>
+                            <input type="number" id="questionIdDelete" name="questionIdDelete" min="1" required><br>
+                        </div>
+                    </div>
+                </div>
+                <button class="custombtn" style="margin-left: 165px;">Delete Question</button>
+            </div>
+        </form>
+        
+        <script>
+            // Get the modal
+            var modal = document.getElementById("questionModal");
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("questionBtn");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+        </script>
 <%- include ('templates/footer'); -%>
