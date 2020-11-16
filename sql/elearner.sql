@@ -10,8 +10,8 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
 	`userId` mediumint(9) NOT NULL,
 	`username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-	`password` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-	`email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+	`password` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+	`email` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
 	`background` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
  
@@ -72,7 +72,7 @@ DROP TABLE IF EXISTS `quizAttempts`; -- records past quiz attempts. feel free to
 CREATE TABLE `quizAttempts` (
   `quizAttemptId` mediumint(97) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userId` mediumint(9) NOT NULL,
-  `testScore` tinyint(2) NOT NULL --ideally it will be a percentage number but we can use a max score and number of correct scores in the row if you all choose
+  `testScore` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 ALTER TABLE `users`

@@ -125,10 +125,13 @@ app.get('/login', function(req, res){
 /* Add login post method */
 app.post('/login', async function(req, res){
     let isUserExist  = await checkUsername(req.body.username);
+    console.log("============================");
     console.log(isUserExist[0]);
+    console.log("============================");
     let hashedPasswd  = isUserExist.length > 0 ? isUserExist[0].password : '';
+    console.log(req.body.password)
     let passwordMatch = await checkPassword(req.body.password, hashedPasswd);
-    console.log(passwordMatch);
+    console.log("password match: " + passwordMatch);
     if(passwordMatch){
         req.session.authenticated = true;
         req.session.user = isUserExist[0].username;
@@ -136,7 +139,7 @@ app.post('/login', async function(req, res){
         console.log("authenticated: " + req.session.authenticated);
         console.log("username: " + req.session.user);
         console.log("ID: " + req.session.user_id);
-        res.redirect('/home');
+        res.redirect('/landing');
     }
     else{
         console.log("error:::");
@@ -170,6 +173,12 @@ app.get('/about', function(req, res){
     res.render('about');
 });
 
+/*landing page after successful log in */
+app.get('/landing', isAuthenticated, function(req, res) {
+    let u_id = req.session.user_id;
+    let u_name = req.session.username;
+    res.render('landing', {userId: u_id, username: u_name});
+});
 
 /* Logout Route */
 app.get('/logout', function(req, res){
