@@ -9,8 +9,9 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
 	`userId` mediumint(9) NOT NULL,
-	`username` varchar(10) COLLATE utf8_unicode_ci NOT NULL UNIQUE,
-	`password` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
+	`username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+	`password` varchar(30) COLLATE utf8_unicode_ci NOT NULL
+	`email` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
 -- 	`gradeLvl` mediumint(9) NOT NULL,
 	`background` varchar(200) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -41,22 +42,26 @@ CREATE TABLE `totalQuestions` (
 -- --
 -- -- Insertion for table `users`
 -- --
-INSERT INTO `users` (`userId`, `username`, `password`, `background`) VALUES
-(1, 'roob', 'roob', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(2, 'mytzy', 'mytzy', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(3, 'miguel', 'mytzy', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
-(4, 'gerard', 'mytzy', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
-(5, 'kim', 'mytzy', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(6, 'angel', 'mytzy', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg'),
-(7, 'yeesus', 'mytzy', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
-(8, 'chuy', 'mytzy', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg'),
-(9, 'chu', 'mytzy', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
-(10, 'caas', 'mytzy', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(11, 'humphrey', 'mytzy', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
-(12, 'jenjen', 'mytzy', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
-(13, 'theobald', 'mytzy', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
-(14, 'trinh', 'mytzy', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
-(15, 'escobar', 'mytzy', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg');
+-- INSERT INTO `users` (`userId`, `username`, `password`, `email`, `background`) VALUES
+-- (1, 'roob', 'roob', 'm@gmail.com', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+-- (2, 'mytzy', 'mytzy', 'm@gmail.com', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+-- (3, 'miguel', 'mytzy', 'm@gmail.com', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
+-- (4, 'gerard', 'mytzy', 'm@gmail.com', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
+-- (5, 'kim', 'mytzy', 'm@gmail.com', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+-- (6, 'angel', 'mytzy', 'm@gmail.com', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg'),
+-- (7, 'yeesus', 'mytzy', 'm@gmail.com', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
+-- (8, 'chuy', 'mytzy', 'm@gmail.com', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg'),
+-- (9, 'chu', 'mytzy', 'm@gmail.com', 'https://lh3.googleusercontent.com/proxy/chlFTAFis-9XmPGc4dTcdP4pHaZSgBT7HahGPzUulOiwFf3z94eWKE8dWGOEmn0NpAOA3qAf4zbNqn9y0tEQVzsfa7EIc27pZSpihQIlRITkIp9d8NoH83vsu16KZsK7LbY'),
+-- (10, 'caas', 'mytzy', 'm@gmail.com', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+-- (11, 'humphrey', 'mytzy', 'm@gmail.com', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
+-- (12, 'jenjen', 'mytzy', 'm@gmail.com', 'https://images.pexels.com/photos/1831234/pexels-photo-1831234.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'),
+-- (13, 'theobald', 'mytzy', 'm@gmail.com', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
+-- (14, 'trinh', 'mytzy', 'm@gmail.com', 'https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg'),
+-- (15, 'escobar', 'mytzy', 'm@gmail.com', 'https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg');
+
+INSERT INTO `users` (`userId`, `username`, `password`, `email`) VALUES
+(1, 'roob', 'roob', 'm@gmail.com'),
+(2, 'mytzy', 'mytzy', 'm@gmail.com');
 
 --
 -- Insertion for table `totalQuestions`
