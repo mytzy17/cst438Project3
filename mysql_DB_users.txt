@@ -1,0 +1,8 @@
+name: roob pw: roob
+
+To log in:
+mysql -u username -p
+then enter password
+
+to run sql file: (in shell)
+mysql -p -u username database name < location/ofFile
