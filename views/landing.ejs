@@ -19,7 +19,21 @@
 				        <button type="button" class="close" data-dismiss="modal">&times;</button>
 				      </div>
 				      <div class="modal-body" style="color: black;">
-				        <p>Where the form will be</p>
+				      	<form action="/quiz" method="POST">
+				      		<label for="chooseDiff">Choose a difficulty:</label><br>
+                            <input type="number" id="chooseDiff" name="chooseDiff" min="1" max="10" required><br>
+                            <label for="chooseCat">Choose a category for your quiz:</label><br>
+                            <select id="chooseCat" name="chooseCat" required>
+                                <option value="Math">Math</option>
+                                <option value="Science">Science</option>
+                                <option value="English">English</option>
+                            </select><br>
+                            <label for="chooseGrade">Choose grade level</label><br>
+                            <input type="number" id="chooseGrade" name="chooseGrade" min="1" max="6" required><br>
+                            <label for="chooseNum">Choose number of questions</label><br>
+                            <input type="number" id="chooseNum" name="chooseNum" min="1" max="6" required><br>
+                            <button class="custombtn">Start Quiz</button>
+				      	</form>
 				      </div>
 				      <div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
