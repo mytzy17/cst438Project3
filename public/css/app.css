@@ -21,7 +21,7 @@ li {
 .form-login {
     background-color: rgba(0,0,0,0.55);
     padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 55px;
     padding-left: 20px;
     padding-right: 20px;
     border-radius: 15px;
@@ -211,7 +211,7 @@ h4 {
     padding: 0 0 11px;
     position: relative;
     text-transform: uppercase;
-    color: #000;
+    color: white;
 }
 .aboutus-title::after {
     background: #fdb801 none repeat scroll 0 0;
@@ -223,10 +223,11 @@ h4 {
     width: 54px;
 }
 .aboutus-text {
-    color: #606060;
-    font-size: 13px;
+    color: #f50707;
+    font-size: 25px;
     line-height: 22px;
     margin: 0 0 35px;
+    background-color: #edea8a;
 }
 
 a:hover, a:active {
@@ -234,17 +235,17 @@ a:hover, a:active {
     text-decoration: none;
     outline: 0;
 }
-.aboutus-more {
-    border: 1px solid #fdb801;
-    border-radius: 25px;
-    color: #fdb801;
-    display: inline-block;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0;
-    padding: 7px 20px;
-    text-transform: uppercase;
-}
+/*.aboutus-more {*/
+/*    border: 1px solid #fdb801;*/
+/*    border-radius: 25px;*/
+/*    color: #fdb801;*/
+/*    display: inline-block;*/
+/*    font-size: 14px;*/
+/*    font-weight: 700;*/
+/*    letter-spacing: 0;*/
+/*    padding: 7px 20px;*/
+/*    text-transform: uppercase;*/
+/*}*/
 .feature .feature-box .iconset {
     background: #fff none repeat scroll 0 0;
     float: left;
@@ -261,42 +262,40 @@ a:hover, a:active {
     width: 1px;
 }
 
-.feature .feature-box .feature-content h4 {
-    color: #0f0f0f;
-    font-size: 18px;
-    letter-spacing: 0;
-    line-height: 22px;
-    margin: 0 0 5px;
-}
+/*.feature .feature-box .feature-content h4 {*/
+/*    color: #0f0f0f;*/
+/*    font-size: 40px;*/
+/*    letter-spacing: 0;*/
+/*    line-height: 22px;*/
+/*    margin: 0 0 5px;*/
+/*}*/
 
 
 .feature .feature-box .feature-content {
     float: left;
-    padding-left: 28px;
+    padding-left: 15px;
     width: 78%;
 }
 .feature .feature-box .feature-content h4 {
-    color: #0f0f0f;
-    font-size: 18px;
+    color: white;
+    font-size: 30px;
     letter-spacing: 0;
     line-height: 22px;
     margin: 0 0 5px;
 }
 .feature .feature-box .feature-content p {
-    color: #606060;
-    font-size: 13px;
-    line-height: 22px;
+    color: #f50707;
+    font-size: 20px;
+    line-height: 33px;
+    background-color: #edea8a;
 }
-.icon {
-    color : #f4b841;
-    padding:0px;
-    font-size:40px;
-    border: 1px solid #fdb801;
-    border-radius: 100px;
-    color: #fdb801;
-    font-size: 28px;
-    height: 70px;
-    line-height: 70px;
-    text-align: center;
-    width: 70px;
+
+.backgroundAbout{
+    background-image:url('https://www.larsonbuilders.com/wp-content/uploads/2012/10/Education.jpg');
+  background-position:center;
+  background-size:cover;
+  
+  -webkit-font-smoothing: antialiased;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
 }
