@@ -70,7 +70,10 @@ app.get('/adminlogin',function(req, res) {
 });
 
 app.post('/adminlogin', function(req, res) {
-    if(req.body.adminName == adminUser && req.body.adminPW == adminPassword) {
+    console.log(req.body.username + " PW: " + req.body.password);
+    console.log(adminUser + " PW: " + adminPassword);
+    
+    if(req.body.username == adminUser && req.body.password == adminPassword) {
         res.redirect('/admin');
     } else {
         res.redirect('/');
@@ -178,6 +181,24 @@ app.get('/landing', isAuthenticated, function(req, res) {
     let u_id = req.session.user_id;
     let u_name = req.session.username;
     res.render('landing', {userId: u_id, username: u_name});
+});
+
+
+var userChosenDiff;
+var userChosenCat;
+var userChosenGradeLvl;
+var userChosenNumOfQs;
+app.post('/landing' ,isAuthenticated, function(req, res) {
+    userChosenDiff = req.body.chooseDiff;
+    userChosenCat = req.body.chooseCat;
+    userChosenGradeLvl = req.body.chooseGrade;
+    userChosenNumOfQs = req.body.chooseNum;
+    /* figure out what you want to do to transfer data from this page to quiz page*/
+    /*
+        one way is to query here, get an array of all questions fitting the
+        user chosen options and then pass those to the quiz page and back
+        end logic. OR you can pass the chosen options and let quiz backend do
+    */
 });
 
 

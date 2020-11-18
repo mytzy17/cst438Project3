@@ -81,7 +81,7 @@ h4 {
 	background:url('https://www.datadriveninvestor.com/wp-content/uploads/2019/04/developing-multilingual-elearning.social.jpg');
 	background-position: top;
 	background-size:cover;
-	/*background-attachment: fixed;*/
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 }
 .banner .navbar{
@@ -102,7 +102,7 @@ h4 {
 }
 .banner .info{
 	margin-top:15%;
-	transform: translateY(-15%);
+	/*transform: translateY(-15%);*/
 }
 .banner .info h1{
 	font-size: 2.5em;
@@ -298,4 +298,26 @@ a:hover, a:active {
   -webkit-font-smoothing: antialiased;
   font: normal 20px Roboto,arial,sans-serif;
   font-family: 'Mansalva', cursive;
+}
+.icon {
+    color : #f4b841;
+    padding:0px;
+    font-size:40px;
+    border: 1px solid #fdb801;
+    border-radius: 100px;
+    color: #fdb801;
+    font-size: 28px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    width: 70px;
+}
+
+#takeQuizButton {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
