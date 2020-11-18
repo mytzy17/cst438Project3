@@ -70,7 +70,10 @@ app.get('/adminlogin',function(req, res) {
 });
 
 app.post('/adminlogin', function(req, res) {
-    if(req.body.adminName == adminUser && req.body.adminPW == adminPassword) {
+    console.log(req.body.username + " PW: " + req.body.password);
+    console.log(adminUser + " PW: " + adminPassword);
+    
+    if(req.body.username == adminUser && req.body.password == adminPassword) {
         res.redirect('/admin');
     } else {
         res.redirect('/');
