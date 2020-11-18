@@ -1,9 +1,12 @@
 <%- include ('templates/header'); -%>
-    Welcome Admin!
+<body id="backgroundAdminLogin">
+    <div class="admincontainer">
+        <h1 style="color:white;">Welcome Admin!</h1>
         <br>
-        <button id="questionBtn" style="margin-left: 165px;">List of Questions</button>
-        
+        <button class="custombtn">List of Questions</button>
+        <br>
         <!-- The Modal -->
+        <br>
         <div id="questionModal" class="modal">
           <!-- Modal content -->
           <div class="modal-content">
@@ -25,8 +28,8 @@
         </div>
                 
         <form action='/adminadd' method='POST' class="addQform">
-            <div class="row">
-                <div class="col-md-offset-1 col-md-2">
+            <!--<div class="row">-->
+            <!--    <div class="col-md-offset-1 col-md-2">-->
                     <h1>Add Question</h1>
                         <div><br>
                             <label for="newDiff">Choose a difficulty:</label><br>
@@ -46,51 +49,57 @@
                             <label for="newGradeLvl">Choose grade level</label><br>
                             <input type="number" id="newGradeLvl" name="newGradeLvl" min="1" max="6" required><br>
                         </div>
-                    </div>
-                </div>
-                <button class="custombtn" style="margin-left: 165px;">Add Question</button>
-            </div>
+                <!--    </div>-->
+                <!--</div>-->
+                <br><br>
+                <button class="custombtn">Add Question</button>
+                <br><br>
+            <!--</div>-->
         </form>
-        
+        <br><br>
         <form action='/admindelete' method='POST' class="addQform">
-            <div class="row">
-                <div class="col-md-offset-1 col-md-2">
+            <!--<div class="row">-->
+            <!--    <div class="col-md-offset-1 col-md-2">-->
                     <h1>Delete Question Question</h1>
                         <div><br>
                             <label for="newDiff">Input the questionId of the question you want to delete:</label><br>
                             <input type="number" id="questionIdDelete" name="questionIdDelete" min="1" required><br>
                         </div>
-                    </div>
-                </div>
-                <button class="custombtn" style="margin-left: 165px;">Delete Question</button>
-            </div>
+                <!--    </div>-->
+                <!--</div>-->
+                <br><br>
+                <button class="custombtn">Delete Question</button>
+                <br><br>
+            <!--</div>-->
         </form>
+    </div>
         
-        <script>
-            // Get the modal
-            var modal = document.getElementById("questionModal");
-            
-            // Get the button that opens the modal
-            var btn = document.getElementById("questionBtn");
-            
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-            
-            // When the user clicks the button, open the modal 
-            btn.onclick = function() {
-              modal.style.display = "block";
-            }
-            
-            // When the user clicks on <span> (x), close the modal
-            span.onclick = function() {
-              modal.style.display = "none";
-            }
-            
-            // When the user clicks anywhere outside of the modal, close it
-            window.onclick = function(event) {
-              if (event.target == modal) {
-                modal.style.display = "none";
-              }
-            }
-        </script>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("questionModal");
+        
+        // Get the button that opens the modal
+        var btn = document.getElementById("questionBtn");
+        
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        
+        // When the user clicks the button, open the modal 
+        btn.onclick = function() {
+          modal.style.display = "block";
+        }
+        
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function() {
+          modal.style.display = "none";
+        }
+        
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+    </script>
+</body>
 <%- include ('templates/footer'); -%>
