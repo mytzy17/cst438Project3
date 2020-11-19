@@ -1,3 +1,8 @@
 <%- include ('templates/header'); -%>
-
+    
+    
+    <%qList.forEach(function(q) {%>
+        <h5> <%=q.question%></h5> <br>
+        <h5> <%=q.answer%></h5> <br>
+    <% });%>
 <%- include ('templates/footer'); -%>
