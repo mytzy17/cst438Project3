@@ -216,6 +216,21 @@ app.get('/quiz', isAuthenticated, function(req, res) {
     })
 })
 
+/* Science page */
+app.get('/science', function(req, res){
+    res.render('science');
+});
+
+/* Math page*/
+app.get('/math', function(req, res) {
+    res.render('math')
+});
+
+/* English page */
+app.get('/english', function(req, res) {
+    res.render('english');
+});
+
 /* Logout Route */
 app.get('/logout', function(req, res){
    req.session.destroy();
