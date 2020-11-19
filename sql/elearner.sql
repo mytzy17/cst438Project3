@@ -54,8 +54,14 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 (2, 6, 'Science', '', 'What part of a bone builds new blood cells? a. Joints b. Bone marrow c. Spongy bone d. Compact bone', 'b', 3),
 (3, 3, 'English', '', 'Which letters BEST complete the word? spar____ a. kle b. kel c. kele', 'a', 1),
 (4, 9, 'Math', '', '524 + 633 = ', '1157', 2),
-(5, 8, 'Englsh', '', 'A person who is shy probably does NOT? a. talk a lot. b. like animals. c. have any friends. d. get along with people.', 'a', 4),
+(5, 8, 'English', '', 'A person who is shy probably does NOT? a. talk a lot. b. like animals. c. have any friends. d. get along with people.', 'a', 4),
 (6, 1, 'Science', '', 'Which law says that an object in motion will stay in motion unless another forces changes that? a. First law b. Second law c. Third law d. All', 'a', 5);
+(7, 1, 'Science', '', 'What is a scientist called who studies space in space? a. Astronaut b. Biologist c. Paleontologist d. Physicist', 'a', 1);
+(8, 1, 'Science', '', 'What is the Sun? a. A black hole b. Lots of lightning c. A bright flashlight d. A star', 'd', 1);
+(9, 1, 'Science', '', 'What is a scientist called that studies living things? a. Geologist b. Engineer c. Paleontologist d. Biologist', 'd', 1);
+(10, 1, 'English', '', 'Which letters complete the sentence I have to __ my homework? a. do b. does c. is d. am', 'a', 1);
+(11, 1, 'English', '', 'what is the past verb of speak? a. speaking b. spoke c. speaker d. talk', 'b', 1);
+(12, 1, 'English', '', 'Which letters complete the sentence She __ my friend? a. is b. are c. has', 'a', 1);
 
 --
 -- Insertion for table `totalAnswers`
