@@ -234,6 +234,36 @@ app.get('/english', function(req, res) {
     res.render('english');
 });
 
+/* Grade1 page */
+app.get('/grade1', function(req, res) {
+    res.render('grade1');
+});
+
+/* Grade2 page */
+app.get('/grade2', function(req, res) {
+    res.render('grade2');
+});
+
+/* Grade3 page */
+app.get('/grade3', function(req, res) {
+    res.render('grade3');
+});
+
+/* Grade4 page */
+app.get('/grade4', function(req, res) {
+    res.render('grade4');
+});
+
+/* Grade3 page */
+app.get('/grade5', function(req, res) {
+    res.render('grade5');
+});
+
+/* Grade3 page */
+app.get('/grade6', function(req, res) {
+    res.render('grade6');
+});
+
 /* Logout Route */
 app.get('/logout', function(req, res){
    req.session.destroy();

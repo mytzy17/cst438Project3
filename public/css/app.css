@@ -244,17 +244,17 @@ a:hover, a:active {
     text-decoration: none;
     outline: 0;
 }
-/*.aboutus-more {*/
-/*    border: 1px solid #fdb801;*/
-/*    border-radius: 25px;*/
-/*    color: #fdb801;*/
-/*    display: inline-block;*/
-/*    font-size: 14px;*/
-/*    font-weight: 700;*/
-/*    letter-spacing: 0;*/
-/*    padding: 7px 20px;*/
-/*    text-transform: uppercase;*/
-/*}*/
+.aboutus-more {
+    border: 1px solid #fdb801;
+    border-radius: 25px;
+    color: #fdb801;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    padding: 7px 20px;
+    text-transform: uppercase;
+}
 .feature .feature-box .iconset {
     background: #fff none repeat scroll 0 0;
     float: left;
@@ -373,3 +373,20 @@ a:hover, a:active {
     color:white;
     box-shadow:0 1px 0 #cfcfcf;
 }
+.backgroundGrade1{
+  background-image:url('https://i.gifer.com/9Y9F.gif');
+  background-position:center;
+  background-size:cover;
+  
+  -webkit-font-smoothing: antialiased;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
+}
+.aboutus-text2 {
+    color: #c705e6;
+    font-size: 25px;
+    line-height: 22px;
+    margin: 0 0 35px;
+    background-color: #1cd94e;
+}
+
