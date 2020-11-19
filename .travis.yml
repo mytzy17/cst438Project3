@@ -9,6 +9,10 @@ node_js:
 
 install:
   - npm install 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> 662b839ef75c4961ea4c7f82f30c233d0f76c5e8
 script:
   - npm test
