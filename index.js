@@ -8,8 +8,8 @@ var bcrypt = require('bcrypt');
 var app = express();
 
 //admin credentials
-var adminUser = "XXXTentacles";
-var adminPassword = "Gayball";
+var adminUser = "admin";
+var adminPassword = "pw";
 
 app.use(express.static('css'));
 app.use(express.static('public'));
@@ -204,14 +204,17 @@ app.post('/gotoquiz' ,isAuthenticated, function(req, res) {
 });
 
 app.get('/quiz', isAuthenticated, function(req, res) {
+    console.log("Diff:" + userChosenDiff + " Cat:" + userChosenCat + " GradeLvl:"
+        + userChosenGradeLvl + " numQs:" + userChosenNumOfQs);
     var stmt = "SELECT * FROM totalQuestions WHERE difficulty=" + userChosenDiff
         + " AND category='" + userChosenCat + "' AND gradeLvl=" + userChosenGradeLvl
         + " ORDER BY RAND() LIMIT " + userChosenNumOfQs + ";";
+    console.log(stmt)
     
     connection.query(stmt, function(err, result) {
         if(err) throw err;
         let qList = result;
-        
+        console.log(qList);
         res.render('quiz', {qList: qList});
     })
 })
