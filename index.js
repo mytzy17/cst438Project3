@@ -219,6 +219,20 @@ app.get('/quiz', isAuthenticated, function(req, res) {
     })
 })
 
+app.get('/grade/:gid', function(req, res) {
+   let stmt = "SELECT * FROM gradeLvlInfo WHERE gradeLvl = " + req.params.gid + ";"; 
+   console.log(stmt);
+   connection.query(stmt, function(err, result) {
+       if(err) throw err;
+       
+       if(result.length) {
+           var gradeInfo = result[0];
+           console.log(gradeInfo);
+           res.render('grade', {gradeInfo: gradeInfo});
+       }
+   })
+});
+
 /* Science page */
 app.get('/science', function(req, res){
     res.render('science');
