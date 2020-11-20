@@ -62,7 +62,7 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 (10, 1, 'English', '', 'Which letters complete the sentence I have to __ my homework? a. do b. does c. is d. am', 'a', 1),
 (11, 1, 'English', '', 'what is the past verb of speak? a. speaking b. spoke c. speaker d. talk', 'b', 1),
 (12, 1, 'English', '', 'Which letters complete the sentence She __ my friend? a. is b. are c. has', 'a', 1),
-(11, 1, 'Math', 'https://i.pinimg.com/600x315/d6/1d/d7/d61dd7fcb6fe3417157423b2b48ebfe4.jpg', 'What time is it?', '7:00', 1);
+(13, 1, 'Math', 'https://i.pinimg.com/600x315/d6/1d/d7/d61dd7fcb6fe3417157423b2b48ebfe4.jpg', 'What time is it?', '7:00', 1);
 
 --
 -- Insertion for table `totalAnswers`
@@ -75,12 +75,29 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 -- (5, 'a'),
 -- (6, 'a');
 
-DROP TABLE IF EXISTS `quizAttempts`; -- records past quiz attempts. feel free to add anything to it
-CREATE TABLE `quizAttempts` (
+DROP TABLE IF EXISTS `quizAttempts`; 
+CREATE TABLE `quizAttempts` ( -- records past quiz attempts. feel free to add anything to it
   `quizAttemptId` mediumint(97) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userId` mediumint(9) NOT NULL,
   `testScore` tinyint(2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+DROP TABLE IF EXISTS `gradeLvlInfo`;
+CREATE TABLE `gradeLvlInfo` (
+  `gradeLvl` mediumint(97) NOT NULL UNIQUE,
+  `gradeName` varchar(50) NOT NULL,
+  `englishDesc` varchar(500),
+  `mathDesc` varchar(500),
+  `scienceDesc` varchar(500)
+);
+
+INSERT INTO `gradeLvlInfo` (`gradeLvl`, `gradeName`, `englishDesc`, `mathDesc`, `scienceDesc`) VALUES
+(1, '1st grade', 'A quiz that test student''s english grammer to help understand how to formulate sentences.', 'Math Desc', 'Science Desc'),
+(2, '2nd grade', 'English Desc2', 'Math Desc2', 'Science Desc'),
+(3, '3rd grade', 'English Desc3', 'Math Desc3', 'Science Desc'),
+(4, '4th grade', 'English Desc4', 'Math Desc4', 'Science Desc'),
+(5, '5th grade', 'English Desc5', 'Math Desc5', 'Science Desc'),
+(6, '6th grade', 'English Desc6', 'Math Desc6', 'Science Desc');
 
 ALTER TABLE `users`
   ADD PRIMARY KEY (`userId`);
