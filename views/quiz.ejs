@@ -1,9 +1,65 @@
 <%- include ('templates/header'); -%>
-    
+    <%var questionNum = 1; %>
+    <%var totalQuestions = qList.length; %>
     
     <%qList.forEach(function(q) {%>
         <h5> <%=q.question%></h5> <br>
-        <input type="text" class="userInput" required> <del>test for a branch</del>
-        <h5> <%=q.answer%></h5> <br>
+        number = <%=questionNum%> <br>
+        <input type="text" id="questionNumber<%=questionNum%>" class="userInput" required>
+        <span id="questionAnswer<%=questionNum%>" hidden><%=q.answer%></span> <br>
+        <%questionNum++;%>
     <% });%>
+    <br>
+    <button id="submitquiz">Submit</button>
+    <div>
+        <form action="/submitquiz" method="POST" id="submitform">
+            
+        </form>
+    </div>
+    <h3 id="score"></h3>
+    <%
+        console.log("WERE HERE!aaa");
+        var rightAnswers = 0;
+        function compute() {
+            for(i = 0; i < totalQuestions; i++) {
+                console.log(qList);
+            }
+        }
+    %>
+    
+    <script>
+        $(document).ready(function() {
+            console.log("WERE HERE!");
+            var listOfAnswers = [];
+            <% qList.forEach(function(q) {%>
+            listOfAnswers.push("<%=q.answer%>");
+            <% }); %>
+            var totalQuestions = <%=totalQuestions%>;
+            console.log(listOfAnswers.length, "YEA", totalQuestions);
+            var noOfRightAnswers = 0;
+            
+            function compute() {
+                let percentage = (noOfRightAnswers/totalQuestions) * 100;
+                $(`#score`).html(percentage + "%!")
+                $(`#submitform`).append(`<button>submit quiz</button> `);
+                $(`#submitquiz`).remove();
+            }
+            
+            function clicked() {
+                for(i = 0; i < totalQuestions; i++) {
+                    let userAns = $(` #questionNumber${i + 1} `).val();
+                    if (userAns == listOfAnswers[i]) {
+                        noOfRightAnswers++;
+                    }
+                }
+                console.log("Number of right answers: " + noOfRightAnswers);
+                compute();
+                //we call another function that will change some html in here
+                noOfRightAnswers = 0;
+            }
+            
+            document.getElementById("submitquiz").addEventListener("click", clicked);
+            
+        });
+    </script>
 <%- include ('templates/footer'); -%>
