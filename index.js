@@ -44,6 +44,11 @@ function isAuthenticated(req, res, next){
     else next();
 }
 
+function isAdmin(req, res, next) {
+    if(!req.session.admin) res.redirect('/adminlogin');
+    else next();
+}
+
 /* check username in DB */
 function checkUsername(username){
     let stmt = 'SELECT * FROM users WHERE username=?';
@@ -69,18 +74,43 @@ app.get('/adminlogin',function(req, res) {
     res.render('adminlogin');
 });
 
-app.post('/adminlogin', function(req, res) {
-    console.log(req.body.username + " PW: " + req.body.password);
-    console.log(adminUser + " PW: " + adminPassword);
+// app.post('/adminlogin', function(req, res) {
+//     console.log(req.body.username + " PW: " + req.body.password);
+//     console.log(adminUser + " PW: " + adminPassword);
     
-    if(req.body.username == adminUser && req.body.password == adminPassword) {
+//     if(req.body.username == adminUser && req.body.password == adminPassword) {
+//         res.redirect('/admin');
+//     } else {
+//         res.redirect('/');
+//     }
+// });
+
+app.post('/adminlogin', async function(req, res) {
+    console.log("HERE");
+    let isUserExist = await checkUsername(req.body.username);
+    console.log("============================");
+    console.log(isUserExist[0]);
+    console.log("============================");
+    let hashedPassword  = isUserExist.length > 0 ? isUserExist[0].password : '';
+    let passwordMatch = await checkPassword(req.body.password, hashedPassword);
+    console.log(req.body.password);
+    console.log("pwmatch: " + passwordMatch);
+    if(passwordMatch){
+        if(isUserExist[0].isAdmin == 1) {
+            console.log("is an admin!");
+            req.session.admin = true;
+        } else {
+            console.log("NOT an admin!");
+            req.session.admin = false;
+        }
+        req.session.authenticated = true;
+        req.session.user = isUserExist[0].username;
+        req.session.user_id = isUserExist[0].userId;
         res.redirect('/admin');
-    } else {
-        res.redirect('/');
     }
 });
 
-app.get('/admin', function(req, res) {
+app.get('/admin', isAuthenticated, isAdmin, function(req, res) {
     var stmt = "SELECT * FROM totalQuestions;";
     connection.query(stmt, function(err, result){
         if(err) throw err;
@@ -90,7 +120,7 @@ app.get('/admin', function(req, res) {
     })
 })
 
-app.post('/adminadd', function(req, res) {
+app.post('/adminadd', isAuthenticated, isAdmin,function(req, res) {
     var addQuestionStmt = 'INSERT INTO totalQuestions (difficulty, category, image, question, answer, gradeLvl) VALUES (?, ?, ?, ?, ?, ?);';
     let newDiff = parseInt(req.body.newDiff);
     let newImg = "";
@@ -107,7 +137,7 @@ app.post('/adminadd', function(req, res) {
     })
 })
 
-app.post('/admindelete', function(req, res) {
+app.post('/admindelete', isAuthenticated, isAdmin, function(req, res) {
    var deleteQuestionStmt = "DELETE FROM totalQuestions WHERE questionId = " + req.body.questionIdDelete;
    connection.query(deleteQuestionStmt, function(err, result) {
       if(err) throw err;
@@ -127,7 +157,7 @@ app.get('/login', function(req, res){
 
 /* Add login post method */
 app.post('/login', async function(req, res){
-    let isUserExist  = await checkUsername(req.body.username);
+    let isUserExist = await checkUsername(req.body.username);
     console.log("============================");
     console.log(isUserExist[0]);
     console.log("============================");
@@ -161,8 +191,8 @@ app.post('/register', async function(req, res){
     let newPassword = req.body.password.toString();
     bcrypt.hash(newPassword, salt, function(error, hash){
         if(error) throw error;
-        let stmt = 'INSERT INTO users (username, password, email) VALUES (?, ?, ?);';
-        let data = [req.body.username, hash, req.body.email];
+        let stmt = 'INSERT INTO users (username, password, email, isAdmin) VALUES (?, ?, ?, ?);';
+        let data = [req.body.username, hash, req.body.email, 0];
         connection.query(stmt, data, function(err, result){
             console.log(stmt);
            if(err) throw err;
