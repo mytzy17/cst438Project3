@@ -1,4 +1,5 @@
 <%- include ('templates/header'); -%>
+    <body id = "backgroundHome">
     <%var questionNum = 1; %>
     <%var totalQuestions = qList.length; %>
     
@@ -16,17 +17,8 @@
             
         </form>
     </div>
-    <h3 id="score"></h3>
-    <%
-        console.log("WERE HERE!aaa");
-        var rightAnswers = 0;
-        function compute() {
-            for(i = 0; i < totalQuestions; i++) {
-                console.log(qList);
-            }
-        }
-    %>
-    
+    <h3 id="score" name="finalscore"></h3>
+    </body>
     <script>
         $(document).ready(function() {
             console.log("WERE HERE!");

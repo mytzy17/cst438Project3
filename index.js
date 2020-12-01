@@ -219,6 +219,16 @@ app.get('/quiz', isAuthenticated, function(req, res) {
     })
 })
 
+app.post('/submitquiz', isAuthenticated, function(req, res) { //will be tested tomorrow
+    let dateOfSubmission = new Date();
+    let stmt = "INSERT INTO quizAttempts VALUES(?, ?, ?)";
+    let data = [req.session.user_id, req.body.finalscore, dateOfSubmission.toString()];
+    connection.query(stmt, data, function(err, result) {
+        if(err) throw err;
+        res.redirect('/landing');
+    });
+});
+
 app.get('/grade/:gid', function(req, res) {
    let stmt = "SELECT * FROM gradeLvlInfo WHERE gradeLvl = " + req.params.gid + ";"; 
    console.log(stmt);
@@ -246,36 +256,6 @@ app.get('/math', function(req, res) {
 /* English page */
 app.get('/english', function(req, res) {
     res.render('english');
-});
-
-/* Grade1 page */
-app.get('/grade1', function(req, res) {
-    res.render('grade1');
-});
-
-/* Grade2 page */
-app.get('/grade2', function(req, res) {
-    res.render('grade2');
-});
-
-/* Grade3 page */
-app.get('/grade3', function(req, res) {
-    res.render('grade3');
-});
-
-/* Grade4 page */
-app.get('/grade4', function(req, res) {
-    res.render('grade4');
-});
-
-/* Grade3 page */
-app.get('/grade5', function(req, res) {
-    res.render('grade5');
-});
-
-/* Grade3 page */
-app.get('/grade6', function(req, res) {
-    res.render('grade6');
 });
 
 /* Logout Route */
