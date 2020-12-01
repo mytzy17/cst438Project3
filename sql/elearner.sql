@@ -8,11 +8,12 @@ SET time_zone = "+00:00";
 --
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
-	`userId` mediumint(9) NOT NULL,
+	`userId` mediumint(9) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	`username` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
 	`password` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
 	`email` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
-	`background` varchar(200) COLLATE utf8_unicode_ci NOT NULL
+	`background` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+	`isAdmin` mediumint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
  
 --
@@ -29,22 +30,13 @@ CREATE TABLE `totalQuestions` (
   `gradeLvl` mediumint(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Table structure for table `totalAnswers`
---
--- DROP TABLE IF EXISTS `totalAnswers`;
--- CREATE TABLE `totalAnswers` (
--- 	`questionId` mediumint(9) NOT NULL,
--- 	`answer` varchar(25) COLLATE utf8_unicode_ci NOT NULL
--- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 -- --
 -- -- Insertion for table `users`
 -- --
 
-INSERT INTO `users` (`userId`, `username`, `password`, `email`) VALUES
-(1, 'roob', 'roob', 'm@gmail.com'),
-(2, 'mytzy', 'mytzy', 'm@gmail.com');
+-- INSERT INTO `users` (`userId`, `username`, `password`, `email`) VALUES
+-- (1, 'roob', 'roob', 'm@gmail.com'),
+-- (2, 'mytzy', 'mytzy', 'm@gmail.com');
 
 --
 -- Insertion for table `totalQuestions`
@@ -100,15 +92,15 @@ INSERT INTO `gradeLvlInfo` (`gradeLvl`, `gradeName`, `englishDesc`, `mathDesc`, 
 (5, '5th grade', 'English Desc5', 'Math Desc5', 'Science Desc'),
 (6, '6th grade', 'English Desc6', 'Math Desc6', 'Science Desc');
 
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`userId`);
+-- ALTER TABLE `users`
+--   ADD PRIMARY KEY (`userId`);
 ALTER TABLE `totalQuestions`
   ADD PRIMARY KEY (`questionId`);
 -- ALTER TABLE `totalAnswers`
 --   ADD PRIMARY KEY (`questionsId`);
 
-ALTER TABLE `users`
-  MODIFY `userId` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+-- ALTER TABLE `users`
+--   MODIFY `userId` tinyint(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 ALTER TABLE `totalQuestions`
   MODIFY `questionId` mediumint(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
   
