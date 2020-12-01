@@ -222,7 +222,9 @@ app.get('/quiz', isAuthenticated, function(req, res) {
 app.post('/submitquiz', isAuthenticated, function(req, res) { //will be tested tomorrow
     let dateOfSubmission = new Date();
     let stmt = "INSERT INTO quizAttempts VALUES(?, ?, ?)";
-    let data = [req.session.user_id, req.body.finalscore, dateOfSubmission.toString()];
+    let finalscore = req.body.finalscore.toString;
+    finalscore = parseFloat(finalscore).toFixed(2);
+    let data = [req.session.user_id, finalscore, dateOfSubmission.toString()];
     connection.query(stmt, data, function(err, result) {
         if(err) throw err;
         res.redirect('/landing');

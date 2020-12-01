@@ -79,7 +79,7 @@ DROP TABLE IF EXISTS `quizAttempts`;
 CREATE TABLE `quizAttempts` ( -- records past quiz attempts. feel free to add anything to it
   `quizAttemptId` mediumint(97) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userId` mediumint(9) NOT NULL,
-  `testScore` tinyint(2) NOT NULL,
+  `testScore` float(3,2) NOT NULL,
   `submissionDate` mediumint(97)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
