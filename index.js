@@ -7,10 +7,6 @@ var session = require('express-session');
 var bcrypt = require('bcrypt');
 var app = express();
 
-//admin credentials
-var adminUser = "admin";
-var adminPassword = "pw";
-
 app.use(express.static('css'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -73,17 +69,6 @@ function checkPassword(password, hash){
 app.get('/adminlogin',function(req, res) {
     res.render('adminlogin');
 });
-
-// app.post('/adminlogin', function(req, res) {
-//     console.log(req.body.username + " PW: " + req.body.password);
-//     console.log(adminUser + " PW: " + adminPassword);
-    
-//     if(req.body.username == adminUser && req.body.password == adminPassword) {
-//         res.redirect('/admin');
-//     } else {
-//         res.redirect('/');
-//     }
-// });
 
 app.post('/adminlogin', async function(req, res) {
     console.log("HERE");
@@ -223,13 +208,6 @@ app.post('/gotoquiz' ,isAuthenticated, function(req, res) {
     userChosenCat = req.body.chooseCat;
     userChosenGradeLvl = parseInt(req.body.chooseGrade);
     userChosenNumOfQs = parseInt(req.body.chooseNum);
-    /* figure out what you want to do to transfer data from this page to quiz page*/
-    /*
-        one way is to query here, get an array of all questions fitting the
-        user chosen options and then pass those to the quiz page and back
-        end logic. OR you can pass the chosen options and let quiz backend
-    */
-    
     res.redirect('/quiz');
 });
 
@@ -257,6 +235,10 @@ app.post('/submitquiz', isAuthenticated, function(req, res) { //will be tested t
     let data = [req.session.user_id, finalscore, dateOfSubmission.toString()];
     connection.query(stmt, data, function(err, result) {
         if(err) throw err;
+        userChosenDiff = null;
+        userChosenCat = null;
+        userChosenGradeLvl = null;
+        userChosenNumOfQs = null;
         res.redirect('/landing');
     });
 });
