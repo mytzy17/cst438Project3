@@ -257,6 +257,29 @@ app.get('/grade/:gid', function(req, res) {
    })
 });
 
+app.get('/user/:uid', isAuthenticated, function(req, res) {
+    console.log("User page");
+    var stmt = 'SELECT * FROM users where userId = ' + req.session.user_id + ';';
+    connection.query(stmt, function(error, result) {
+        if(result.length) {
+            if(error) throw error;
+            let userInfo = result[0];
+            res.render('userprofile', {userInfo:userInfo});
+        }
+    });
+});
+
+app.post('/user/:uid', isAuthenticated, function(req, res) {
+    console.log("User page");
+    var stmt = 'update users set email = \'' + req.body.email + '\' where userId=' + req.session.user_id + ';';
+    connection.query(stmt, function(error, result) {
+        console.log("Query update Started");
+        console.log("reached here!");
+        if(error) throw error;
+        res.redirect('/user/:uid');
+    });
+});
+
 /* Science page */
 app.get('/science', function(req, res){
     res.render('science');

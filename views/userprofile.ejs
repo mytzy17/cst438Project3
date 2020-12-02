@@ -4,11 +4,29 @@
 		<h1 class="title"> ELearner </h1> <br>
   		<h1 id = 'userName'><%=userInfo.username%></h1>
     </div>
-  
-    <div class = 'routes'>
-        <a class='btn btn-primary' href='/home'>Home</a>
-        <a class='btn btn-primary' href='/logout'>Log Out</a>
-    </div>
-    <br>
     
+    <br>
+    <div class="flip-card">
+	  <div class="flip-card-inner">
+	    <div class="flip-card-front">
+	       <img src="https://png.pngtree.com/png-vector/20190729/ourlarge/pngtree-male-man-person-abstract-flat-color-icon-template-png-image_1622081.jpg" alt="cheesePic" style="width:500px;height:500px;">
+	    </div>
+	    <div class="flip-card-back">
+	    	<h3 class="liltitle2"> Email </h3> <br>
+	    	    <div class="lilbox">
+		  		<h3 id = 'lilBoxTitile'><%=userInfo.email%></h3>
+				</div>
+            </div>
+        </div>
+	</div>
+    <form action='/user/<%=userInfo.userId%>' method='POST'>
+  	    <br>
+  	    <h3 class = 'liltitle3'> Update Profile</h3>
+        <div class='col-sm-20'>
+            <input type='text'  name='email' value=<%=userInfo.email%>>
+		</div>
+		<br>
+		<br>
+		<button class='button btn'>Update Profile</button>
+    </form>
 <%- include ('templates/footer'); -%>
