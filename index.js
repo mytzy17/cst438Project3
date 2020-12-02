@@ -271,6 +271,29 @@ app.get('/user/:uid', isAuthenticated, function(req, res) {
     });
 });
 
+app.post('/user/:uid/updatepicture', isAuthenticated, function(req, res) {
+    console.log(req.files);
+    if(!req.files) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    
+    var file = req.files.uploaded_image;
+	var img_name=file.name; 
+	
+	if(file.mimetype == "image/jpeg" || file.mimetype == "image/png"||file.mimetype == "image/gif" ) {
+        file.mv('public/images/uploaded_images/' + file.name, function(err) {
+            if(err) throw err;
+            console.log("userId: " + req.session.user_id);
+            console.log("img_name: " + img_name);
+            let stmt = 'update users set profile_img=\'' + img_name + '\' where userId = ' + req.session.user_id + ";";
+            connection.query(stmt, function(err, result) {
+                if(err) throw err;
+                res.redirect('/user/:uid');
+            })
+        })
+	}
+})
+
 app.post('/user/:uid', isAuthenticated, function(req, res) {
     console.log("User page");
     var stmt = 'update users set email = \'' + req.body.email + '\' where userId=' + req.session.user_id + ';';
