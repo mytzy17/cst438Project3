@@ -6,10 +6,12 @@ var mysql = require('mysql');
 var session = require('express-session');
 var bcrypt = require('bcrypt');
 var app = express();
+var fileUpload = require('express-fileupload');
 
 app.use(express.static('css'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(fileUpload());
 //app.use(methodOverride('_method'));
 app.use(session({
     secret: 'top secret code!',
