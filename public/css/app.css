@@ -76,7 +76,7 @@ h4 {
 	padding:0;
 	background:#fff;
 	font-family: 'Mansalva', cursive;
-	color: #fff;
+	color: #0000;
 	font-size: 20px;
 }
 .banner{
@@ -163,6 +163,8 @@ h4 {
   padding: 15px;
   border: 1px solid #888;
   width: 100%; /* Could be more or less, depending on screen size */
+  max-height: calc(115vh - 210px);
+  overflow-y: auto;
 }
 
 /* The Close Button */
