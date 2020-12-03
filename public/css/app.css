@@ -540,7 +540,7 @@ a:hover, a:active {
     padding: 2%;
     font-weight: 600;
     color: #6c757d;
-    /*cursor: pointer;*/
+    cursor: pointer;
 }
 .proile-rating{
     font-size: 12px;
