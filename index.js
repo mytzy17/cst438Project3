@@ -323,7 +323,7 @@ app.post('/user/:uid/updatepicture', isAuthenticated, function(req, res) {
             let stmt = 'update users set profile_img=\'' + img_name + '\' where userId = ' + req.session.user_id + ";";
             connection.query(stmt, function(err, result) {
                 if(err) throw err;
-                res.redirect('/user/:uid');
+                res.redirect('/user/' + req.session.user_id);
             })
         })
 	}
