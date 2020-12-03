@@ -76,7 +76,7 @@ h4 {
 	padding:0;
 	background:#fff;
 	font-family: 'Mansalva', cursive;
-	color: #fff;
+	color: #0000;
 	font-size: 20px;
 }
 .banner{
@@ -163,6 +163,8 @@ h4 {
   padding: 15px;
   border: 1px solid #888;
   width: 100%; /* Could be more or less, depending on screen size */
+  max-height: calc(115vh - 210px);
+  overflow-y: auto;
 }
 
 /* The Close Button */
@@ -475,3 +477,18 @@ a:hover, a:active {
 .jumbotron{
   background-color: #ebaf23;
 }
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 

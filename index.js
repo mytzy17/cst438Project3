@@ -6,10 +6,13 @@ var mysql = require('mysql');
 var session = require('express-session');
 var bcrypt = require('bcrypt');
 var app = express();
+var fileUpload = require('express-fileupload');
 
 app.use(express.static('css'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(fileUpload());
+//check this for file uploading https://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
 //app.use(methodOverride('_method'));
 app.use(session({
     secret: 'top secret code!',
@@ -175,16 +178,50 @@ app.post('/register', async function(req, res){
     let salt = 10;
     let newPassword = req.body.password.toString();
     bcrypt.hash(newPassword, salt, function(error, hash){
-        if(error) throw error;
-        let stmt = 'INSERT INTO users (username, password, email, isAdmin) VALUES (?, ?, ?, ?);';
-        let data = [req.body.username, hash, req.body.email, 0];
-        connection.query(stmt, data, function(err, result){
-            console.log(stmt);
-           if(err) throw err;
-           res.redirect('/login');
-        });
+        if(req.body.color == "green"){
+            let g = 'bulbasaur.gif';
+            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, g, 0];
+            connection.query(stmt1, data, function(err, result){
+                console.log(stmt1);
+               if(err) throw err;
+                res.redirect('/login');
+            });
+        }else if(req.body.color == "blue"){
+            let b = 'squirtle.gif';
+            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, b, 0];
+            connection.query(stmt1, data, function(err, result){
+                console.log(stmt1);
+               if(err) throw err;
+                res.redirect('/login');
+            });
+        }else if(req.body.color == "red"){
+            let r = 'charmander.gif';
+            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, r, 0];
+            connection.query(stmt1, data, function(err, result){
+                console.log(stmt1);
+               if(err) throw err;
+                res.redirect('/login');
+            });
+        }
     });
 });
+// app.post('/register', async function(req, res){
+//     let salt = 10;
+//     let newPassword = req.body.password.toString();
+//     bcrypt.hash(newPassword, salt, function(error, hash){
+//         if(error) throw error;
+//         let stmt = 'INSERT INTO users (username, password, email, color, isAdmin) VALUES (?, ?, ?, ?, ?);';
+//         let data = [req.body.username, hash, req.body.email, req.body.color, 0];
+//         connection.query(stmt, data, function(err, result){
+//             console.log(stmt);
+//           if(err) throw err;
+//           res.redirect('/login');
+//         });
+//     });
+// });
 
 /* About Routes */
 app.get('/about', function(req, res){
@@ -268,6 +305,29 @@ app.get('/user/:uid', isAuthenticated, function(req, res) {
         }
     });
 });
+
+app.post('/user/:uid/updatepicture', isAuthenticated, function(req, res) {
+    console.log(req.files);
+    if(!req.files) {
+        return res.status(400).send('No files were uploaded.');
+    }
+    
+    var file = req.files.uploaded_image;
+	var img_name=file.name; 
+	
+	if(file.mimetype == "image/jpeg" || file.mimetype == "image/png"||file.mimetype == "image/gif" ) {
+        file.mv('public/images/uploaded_images/' + file.name, function(err) {
+            if(err) throw err;
+            console.log("userId: " + req.session.user_id);
+            console.log("img_name: " + img_name);
+            let stmt = 'update users set profile_img=\'' + img_name + '\' where userId = ' + req.session.user_id + ";";
+            connection.query(stmt, function(err, result) {
+                if(err) throw err;
+                res.redirect('/user/:uid');
+            })
+        })
+	}
+})
 
 app.post('/user/:uid', isAuthenticated, function(req, res) {
     console.log("User page");

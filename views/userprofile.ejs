@@ -2,6 +2,8 @@
 <%- include ('templates/navbar2'); -%>
     <div class = 'jumbotron move'>
 		<h1 class="title"> Welcome </h1> <br>
+    <div class = 'jumbotron'>
+		<h1 class="title"> ELearner </h1> <br>
   		<h1 id = 'userName'><%=userInfo.username%></h1>
   		<form action='/user/<%=userInfo.userId%>' method='POST'>
   	    <br>
@@ -18,16 +20,37 @@
     <br>
     <br>
     <div class="flip-card">
-	  <div class="flip-card-inner">
+<div class="flip-card-inner">
 	    <div class="flip-card-front">
 	       <img src="https://png.pngtree.com/png-vector/20190729/ourlarge/pngtree-male-man-person-abstract-flat-color-icon-template-png-image_1622081.jpg" alt="cheesePic" style="width:500px;height:500px;">
 	    </div>
 	    <div class="flip-card-back">
 	    	<h3 class="liltitle2"> Email </h3> <br>
-	    	    <div class="lilbox">
-		  		<h3 id = 'lilBoxTitile'><%=userInfo.email%></h3>
-				</div>
-            </div>
+    	    <div class="lilbox">
+	  		<h3 id = 'lilBoxTitile'><%=userInfo.email%></h3>
+			</div>
         </div>
-	</div>
+        <img alt="User Pic" src="/images/uploaded_images/<%=userInfo.profile_img%>">
+        <img alt="User Avatar" src="/images/uploaded_images/<%=userInfo.avatar%>">
+</div>
+	</div>	
+	<form action='/user/<%=userInfo.userId%>/updatepicture' method='POST' enctype="multipart/form-data">
+	    <div class="form-group">
+            <label for="mob_no" class="col-md-3 control-label">Profile Image</label>
+            <div class="col-sm-9">
+                <input class="form-control" type="file" name="uploaded_image" accept=""/>
+            </div>
+        </div>  
+        <button class='button btn'>Update Profile Picture</button>
+	</form>
+    <form action='/user/<%=userInfo.userId%>' method='POST'>
+  	    <br>
+  	    <h3 class = 'liltitle3'> Update Profile</h3>
+        <div class='col-sm-20'>
+            <input type='text'  name='email' value=<%=userInfo.email%>>
+		</div>
+		<br>
+		<br>
+		<button class='button btn'>Update Profile</button>
+    </form>
 <%- include ('templates/footer'); -%>
