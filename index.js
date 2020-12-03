@@ -326,14 +326,14 @@ app.post('/user/:uid/updatepicture', isAuthenticated, function(req, res) {
 	}
 })
 
-app.post('/user/:uid', isAuthenticated, function(req, res) {
+app.post('/user/:uid/updateemail', isAuthenticated, function(req, res) {
     console.log("User page");
     var stmt = 'update users set email = \'' + req.body.email + '\' where userId=' + req.session.user_id + ';';
     connection.query(stmt, function(error, result) {
         console.log("Query update Started");
         console.log("reached here!");
         if(error) throw error;
-        res.redirect('/user/:uid');
+        res.redirect('/user/' + req.session.user_id);
     });
 });
 
