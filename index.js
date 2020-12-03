@@ -340,6 +340,17 @@ app.post('/user/:uid', isAuthenticated, function(req, res) {
     });
 });
 
+app.get('/editprofile', function(req, res){
+     var stmt = 'SELECT * FROM users where userId = ' + req.session.user_id + ';';
+    connection.query(stmt, function(error, result) {
+        if(result.length) {
+            if(error) throw error;
+            let userInfo = result[0];
+            res.render('editprofile', {userInfo:userInfo});
+        }
+    });
+});
+
 /* Science page */
 app.get('/science', function(req, res){
     res.render('science');
