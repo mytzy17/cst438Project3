@@ -180,8 +180,8 @@ app.post('/register', async function(req, res){
     bcrypt.hash(newPassword, salt, function(error, hash){
         if(req.body.color == "green"){
             let g = 'bulbasaur.gif';
-            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
-            let data = [req.body.username, hash, req.body.email, g, 0];
+            let stmt1 = 'INSERT INTO users (username, password, email, profile_img, avatar, isAdmin) VALUES (?, ?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, "defaultprofilepicture.png", g, 0];
             connection.query(stmt1, data, function(err, result){
                 console.log(stmt1);
                if(err) throw err;
@@ -189,8 +189,8 @@ app.post('/register', async function(req, res){
             });
         }else if(req.body.color == "blue"){
             let b = 'squirtle.gif';
-            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
-            let data = [req.body.username, hash, req.body.email, b, 0];
+            let stmt1 = 'INSERT INTO users (username, password, email, profile_img, avatar, isAdmin) VALUES (?, ?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, "defaultprofilepicture.png", b, 0];
             connection.query(stmt1, data, function(err, result){
                 console.log(stmt1);
                if(err) throw err;
@@ -198,8 +198,8 @@ app.post('/register', async function(req, res){
             });
         }else if(req.body.color == "red"){
             let r = 'charmander.gif';
-            let stmt1 = 'INSERT INTO users (username, password, email, avatar, isAdmin) VALUES (?, ?, ?, ?, ?);';
-            let data = [req.body.username, hash, req.body.email, r, 0];
+            let stmt1 = 'INSERT INTO users (username, password, email, profile_img, avatar, isAdmin) VALUES (?, ?, ?, ?, ?, ?);';
+            let data = [req.body.username, hash, req.body.email, "defaultprofilepicture.png", r, 0];
             connection.query(stmt1, data, function(err, result){
                 console.log(stmt1);
                if(err) throw err;
