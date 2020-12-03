@@ -251,11 +251,17 @@ app.get('/quiz', isAuthenticated, function(req, res) {
 })
 
 app.post('/submitquiz', isAuthenticated, function(req, res) { //will be tested tomorrow
+    console.log("USER ID: " + req.session.user_id);
+    console.log("button submit says " + req.body.submitquiz);
+    console.log("final score: " + req.body.scoresubmittable);
     let dateOfSubmission = new Date();
-    let stmt = "INSERT INTO quizAttempts VALUES(?, ?, ?)";
-    let finalscore = req.body.finalscore.toString;
+    console.log("DAte: " + dateOfSubmission);
+    let stmt = "INSERT INTO quizAttempts (userId, testScore, submissionDate) VALUES (?, ?, ?)";
+    let finalscore = req.body.scoresubmittable.toString();
     finalscore = parseFloat(finalscore).toFixed(2);
-    let data = [req.session.user_id, finalscore, dateOfSubmission.toString()];
+    let newdate = dateOfSubmission.toString();
+    console.log("newDate:" + newdate);
+    let data = [req.session.user_id, finalscore, newdate];
     connection.query(stmt, data, function(err, result) {
         if(err) throw err;
         userChosenDiff = null;

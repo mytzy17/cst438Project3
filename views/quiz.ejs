@@ -1,24 +1,25 @@
 <%- include ('templates/header'); -%>
-    <!--<body id = "backgroundHome">-->
-    <%var questionNum = 1; %>
-    <%var totalQuestions = qList.length; %>
-    
-    <%qList.forEach(function(q) {%>
-        <h5> <%=q.question%></h5> <br>
-        number = <%=questionNum%> <br>
-        <input type="text" id="questionNumber<%=questionNum%>" class="userInput" required>
-        <span id="questionAnswer<%=questionNum%>" hidden><%=q.answer%></span> <br>
-        <%questionNum++;%>
-    <% });%>
-    <br>
-    <button id="submitquiz">Submit</button>
-    <div>
-        <form action="/submitquiz" method="POST" id="submitform">
-            
-        </form>
-    </div>
-    <h3 id="score" name="finalscore"></h3>
-    <!--</body>-->
+    <body>
+        <%var questionNum = 1; %>
+        <%var totalQuestions = qList.length; %>
+        
+        <%qList.forEach(function(q) {%>
+            <h5> <%=q.question%></h5> <br>
+            number = <%=questionNum%> <br>
+            <input type="text" id="questionNumber<%=questionNum%>" class="userInput" required>
+            <span id="questionAnswer<%=questionNum%>" hidden><%=q.answer%></span> <br>
+            <%questionNum++;%>
+        <% });%>
+        <br>
+        <button id="submitquiz" name="submitquiz">Submit</button>
+        <div>
+            <form action="/submitquiz" method="POST" id="submitform">
+                <input type="text" name="scoresubmittable" id="scoresubmittable" hidden>
+                <h3 id="finalscore" name="finalscore"></h3>
+                
+            </form>
+        </div>
+    </body>
     <script>
         $(document).ready(function() {
             console.log("WERE HERE!");
@@ -32,7 +33,9 @@
             
             function compute() {
                 let percentage = (noOfRightAnswers/totalQuestions) * 100;
-                $(`#score`).html(percentage + "%!")
+                percentage = percentage.toFixed(2);
+                $(`#finalscore`).html(percentage + "%!")
+                $(`#scoresubmittable`).val(percentage);
                 $(`#submitform`).append(`<button>submit quiz</button> `);
                 $(`#submitquiz`).remove();
             }
