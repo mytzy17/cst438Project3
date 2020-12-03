@@ -208,20 +208,6 @@ app.post('/register', async function(req, res){
         }
     });
 });
-// app.post('/register', async function(req, res){
-//     let salt = 10;
-//     let newPassword = req.body.password.toString();
-//     bcrypt.hash(newPassword, salt, function(error, hash){
-//         if(error) throw error;
-//         let stmt = 'INSERT INTO users (username, password, email, color, isAdmin) VALUES (?, ?, ?, ?, ?);';
-//         let data = [req.body.username, hash, req.body.email, req.body.color, 0];
-//         connection.query(stmt, data, function(err, result){
-//             console.log(stmt);
-//           if(err) throw err;
-//           res.redirect('/login');
-//         });
-//     });
-// });
 
 /* About Routes */
 app.get('/about', function(req, res){
@@ -307,13 +293,18 @@ app.get('/user/:uid', isAuthenticated, function(req, res) {
 });
 
 app.post('/user/:uid/updatepicture', isAuthenticated, function(req, res) {
+    let randNum1 = Math.floor(100000 + Math.random() * 90000000);
+	let randNum2 = Math.floor(100000 + Math.random() * 90000000);
     console.log(req.files);
     if(!req.files) {
         return res.status(400).send('No files were uploaded.');
     }
     
     var file = req.files.uploaded_image;
+    file.name = randNum1.toString() + file.name.substring(0, file.name.lastIndexOf(".")) + randNum2.toString() + file.name.substr(file.name.lastIndexOf("."));
+    console.log(file);
 	var img_name=file.name; 
+	
 	
 	if(file.mimetype == "image/jpeg" || file.mimetype == "image/png"||file.mimetype == "image/gif" ) {
         file.mv('public/images/uploaded_images/' + file.name, function(err) {
