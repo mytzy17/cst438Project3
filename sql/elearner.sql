@@ -107,7 +107,8 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 (61, 1, 'English', '', 'Identify the adjective in the following sentence. "The rain was steady throughout the afternoon" a. rain b. was c. steady d. throughout', 'c', 6),
 (62, 1, 'English', '', 'Which of the following is a non-count noun? a. table b. candle c. dog d. information', 'd', 6),
 (63, 1, 'English', '', 'Which sentence is a simple sentence? a. We like to eat cheese. b. We like to eat cheese, although some cheeses are disgusting. c. In the mornings, we like to eat cheese on our eggs and toast. d. In the mornings, before we go to school, we like to eat cheese.', 'a', 6),
-(64, 1, 'English', '', 'Disapprove means? a. To not get along b. To not approve of something c. To approve of something', 'b', 6);
+(64, 1, 'English', '', 'Disapprove means? a. To not get along b. To not approve of something c. To approve of something', 'b', 6),
+(65, 1, 'Math', '', ' a.  b. c. ', 'b', 1);
 
 
 --
