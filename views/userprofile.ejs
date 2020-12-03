@@ -1,10 +1,21 @@
 <%- include ('templates/header'); -%>
-
-    <div class = 'jumbotron'>
-		<h1 class="title"> ELearner </h1> <br>
+<%- include ('templates/navbar2'); -%>
+    <div class = 'jumbotron move'>
+		<h1 class="title"> Welcome </h1> <br>
   		<h1 id = 'userName'><%=userInfo.username%></h1>
+  		<form action='/user/<%=userInfo.userId%>' method='POST'>
+  	    <br>
+  	    <h3 class = 'liltitle3'> Update Profile</h3>
+        <div class='col-sm-20'>
+            <input type='text'  name='email' value=<%=userInfo.email%>>
+		</div>
+		<br>
+		<br>
+		<button class="btn btn-md">Update Profile</button>
+    </form>
     </div>
     
+    <br>
     <br>
     <div class="flip-card">
 	  <div class="flip-card-inner">
@@ -19,14 +30,4 @@
             </div>
         </div>
 	</div>
-    <form action='/user/<%=userInfo.userId%>' method='POST'>
-  	    <br>
-  	    <h3 class = 'liltitle3'> Update Profile</h3>
-        <div class='col-sm-20'>
-            <input type='text'  name='email' value=<%=userInfo.email%>>
-		</div>
-		<br>
-		<br>
-		<button class='button btn'>Update Profile</button>
-    </form>
 <%- include ('templates/footer'); -%>
