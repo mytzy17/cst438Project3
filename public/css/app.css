@@ -391,4 +391,104 @@ a:hover, a:active {
     margin: 0 0 35px;
     background-color: #1cd94e;
 }
+.flip-card {
+  background-color: transparent;
+  width: 500px;
+  height: 500px;
+  perspective: 1000px;
+  text-align: center;
+  margin: auto;
+}
 
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #dbad56;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.lilbox {
+  display: inline-block;
+  padding: 0 30px;
+  height: 40px;
+  font-size: 20px;
+  line-height: 50px;
+  border-radius: 25px;
+  background-color: #f1f1f1;
+}
+
+#lilBoxTitile{
+  font-family: 'Shrikhand', cursive;
+  color: #b37700;
+  font-size: 15px;
+}
+
+.liltitle2{
+  font-family: 'Niconne', cursive;
+  background-color: #ffffcc;
+  font-size: 25px;
+  color: black;
+}
+
+.liltitle3{
+  font-family: 'Niconne', cursive;
+  font-size: 40px;
+  text-shadow: -1px 1px 2px white,
+			  1px 1px 2px white,
+			  1px -1px 0 white,
+			  -1px -1px 0 #000;
+}
+
+.move{
+  text-align:center;
+}
+
+#email, #address, #gender, #cname{
+  font-family: 'Niconne', cursive;
+  font-size: 25px;
+}
+
+.jumbotron{
+  background-color: #ebaf23;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.button2 {background-color: #008CBA;} /* Blue */
+.button3 {background-color: #f44336;} /* Red */ 

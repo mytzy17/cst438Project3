@@ -13,6 +13,8 @@ CREATE TABLE `users` (
 	`password` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
 	`email` varchar(500) COLLATE utf8_unicode_ci NOT NULL,
 	`profile_img` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+	`avatar` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
+-- 	`numberOfCorrect` mediumint(9) PRIMARY KEY NOT NULL AUTO_INCREMENT,
 	`isAdmin` mediumint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
  
