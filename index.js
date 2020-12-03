@@ -12,6 +12,7 @@ app.use(express.static('css'));
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(fileUpload());
+//check this for file uploading https://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
 //app.use(methodOverride('_method'));
 app.use(session({
     secret: 'top secret code!',
