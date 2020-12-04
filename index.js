@@ -10,6 +10,7 @@ var fileUpload = require('express-fileupload');
 
 app.use(express.static('css'));
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(fileUpload());
 //check this for file uploading https://stackoverflow.com/questions/15772394/how-to-upload-display-and-save-images-using-node-js-and-express
@@ -222,10 +223,11 @@ app.get('/landing', isAuthenticated, function(req, res) {
 });
 
 
-var userChosenDiff;
-var userChosenCat;
-var userChosenGradeLvl;
-var userChosenNumOfQs;
+var userChosenDiff = null;
+var userChosenCat = null;
+var userChosenGradeLvl = null;
+var userChosenNumOfQs = null;
+var quizData = null;
 app.post('/gotoquiz' ,isAuthenticated, function(req, res) {
     userChosenDiff = parseInt(req.body.chooseDiff);
     userChosenCat = req.body.chooseCat;
@@ -245,23 +247,48 @@ app.get('/quiz', isAuthenticated, function(req, res) {
     connection.query(stmt, function(err, result) {
         if(err) throw err;
         let qList = result;
+        quizData = qList
         console.log(qList);
-        res.render('quiz', {qList: qList});
+        res.render('quiz', {qList: qList, category: userChosenCat, difficulty: userChosenDiff, grade: userChosenGradeLvl});
     })
 })
 
-app.post('/submitquiz', isAuthenticated, function(req, res) { //will be tested tomorrow
-    console.log("USER ID: " + req.session.user_id);
-    console.log("button submit says " + req.body.submitquiz);
-    console.log("final score: " + req.body.scoresubmittable);
-    let dateOfSubmission = new Date();
-    console.log("DAte: " + dateOfSubmission);
+function computePct(rightAns, totalQs) {
+    let pct = (rightAns/totalQs) * 100;
+    return pct.toFixed(2);
+}
+
+function calculate(userAnswers, quizData, quizLength) {
+    let num = 0, rightAnswers = 0;
+    let questionIdArray = [];
+    let answerArray = [];
+    for(let [key, value] of Object.entries(userAnswers)) {
+        console.log(key, ":", value);
+        questionIdArray.push(key);
+        answerArray.push(value)
+    }
+    quizData.forEach(function(q) {
+        console.log("Correct answer: " + q.answer);
+        console.log("Your answer: " + answerArray[num]);
+        if(q.answer == answerArray[num]) {
+            rightAnswers++;
+        }
+        num++;
+    })
+    let pct = computePct(rightAnswers, quizLength);
+    return pct;
+}
+
+app.post('/submittest', isAuthenticated, function(req, res) {
+    let totalQuestions = quizData.length;
+    let userAnswers = req.body;
+    let pct = calculate(userAnswers, quizData, totalQuestions);
+    console.log("pct: ", pct);
+    let dateNow = getDate();
+    console.log("Current Date MM/DD/YYYY: " + dateNow);
     let stmt = "INSERT INTO quizAttempts (userId, testScore, submissionDate) VALUES (?, ?, ?)";
-    let finalscore = req.body.scoresubmittable.toString();
-    finalscore = parseFloat(finalscore).toFixed(2);
-    let newdate = dateOfSubmission.toString();
-    console.log("newDate:" + newdate);
-    let data = [req.session.user_id, finalscore, newdate];
+    let data = [req.session.user_id, pct, dateNow];
+    
     connection.query(stmt, data, function(err, result) {
         if(err) throw err;
         userChosenDiff = null;
@@ -377,3 +404,16 @@ app.get('*', function(req, res){
 app.listen(process.env.PORT || 3000, function(){
     console.log('Server has been started');
 });
+
+//returns the date in mm-dd-yyyy format
+function getDate() {
+    let currDate = new Date();
+    let currentDay = currDate.getDate() - 1;
+    let currentMonth = currDate.getMonth() + 1;
+    let currentYear = currDate.getYear() + 1900;
+    //mm-dd-yyyy format
+    let dateNow = currentMonth.toString() + "-" + currentDay.toString() + "-" + currentYear.toString();
+    console.log(dateNow);
+    console.log(currDate);
+    return dateNow;
+}
