@@ -1,60 +1,20 @@
 <%- include ('templates/header'); -%>
     <body>
-        <%var questionNum = 1; %>
-        <%var totalQuestions = qList.length; %>
+        <h2>Subject: <%=category%></h2>
+        <h2>Difficulty: <%=difficulty%></h2>
+        <h2>Grade Level: <%=grade%></h2>
+        <%var questionNumber = 1; %>
         
-        <%qList.forEach(function(q) {%>
-            <h5> <%=q.question%></h5> <br>
-            number = <%=questionNum%> <br>
-            <input type="text" id="questionNumber<%=questionNum%>" class="userInput" required>
-            <span id="questionAnswer<%=questionNum%>" hidden><%=q.answer%></span> <br>
-            <%questionNum++;%>
-        <% });%>
-        <br>
-        <button id="submitquiz" name="submitquiz">Submit</button>
-        <div>
-            <form action="/submitquiz" method="POST" id="submitform">
-                <input type="text" name="scoresubmittable" id="scoresubmittable" hidden>
-                <h3 id="finalscore" name="finalscore"></h3>
-                
-            </form>
-        </div>
+        <form action="/submittest" method="POST">
+            <%qList.forEach(function(q) {%>
+                <h5> <%=q.question%></h5> <br>
+                <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" required>
+                <span id="questionAnswer<%=questionNumber%>" hidden><%=q.answer%></span> <br>
+                <%questionNumber++;%>
+            <% });%>
+            
+            <button>Submit Test</button>
+        </form>
+        
     </body>
-    <script>
-        $(document).ready(function() {
-            console.log("WERE HERE!");
-            var listOfAnswers = [];
-            <% qList.forEach(function(q) {%>
-            listOfAnswers.push("<%=q.answer%>");
-            <% }); %>
-            var totalQuestions = <%=totalQuestions%>;
-            console.log(listOfAnswers.length, "YEA", totalQuestions);
-            var noOfRightAnswers = 0;
-            
-            function compute() {
-                let percentage = (noOfRightAnswers/totalQuestions) * 100;
-                percentage = percentage.toFixed(2);
-                $(`#finalscore`).html(percentage + "%!")
-                $(`#scoresubmittable`).val(percentage);
-                $(`#submitform`).append(`<button>submit quiz</button> `);
-                $(`#submitquiz`).remove();
-            }
-            
-            function clicked() {
-                for(i = 0; i < totalQuestions; i++) {
-                    let userAns = $(` #questionNumber${i + 1} `).val();
-                    if (userAns == listOfAnswers[i]) {
-                        noOfRightAnswers++;
-                    }
-                }
-                console.log("Number of right answers: " + noOfRightAnswers);
-                compute();
-                //we call another function that will change some html in here
-                noOfRightAnswers = 0;
-            }
-            
-            document.getElementById("submitquiz").addEventListener("click", clicked);
-            
-        });
-    </script>
 <%- include ('templates/footer'); -%>
