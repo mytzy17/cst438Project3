@@ -1,4 +1,5 @@
 <%- include ('templates/header'); -%>
+<%- include ('templates/navbar2'); -%>
     <body>
         <h2>Subject: <%=category%></h2>
         <h2>Difficulty: <%=difficulty%></h2>
@@ -9,10 +10,10 @@
             <%qList.forEach(function(q) {%>
                 <h5> <%=q.question%></h5> <br>
                 <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" required>
-                <span id="questionAnswer<%=questionNumber%>" hidden><%=q.answer%></span> <br>
+                <span id="questionAnswer<%=questionNumber%>" hidden><%=q.answer%></span>
                 <%questionNumber++;%>
             <% });%>
-            
+            <br>
             <button>Submit Test</button>
         </form>
         

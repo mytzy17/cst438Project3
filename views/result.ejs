@@ -1,3 +1,27 @@
 <%- include ('templates/header'); -%>
+<%- include ('templates/navbar2'); -%>
+
+    <body>
+        <% var questionNumber = 1; %>
+        <br><br><br><br><br><br>
+        <div class="container-fluid banner">
+            <div class="jumbotron">
+                <%quizData.forEach( (q, index) => {%>
+                <% let answerForThisQuestion = userAns[index] %>
+                    <h5> <%=q.question%></h5> <br>
+                    The correct answer was: <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" value="<%=q.answer%>" disabled="true" required>
+                    <% if(q.answer == answerForThisQuestion){ %>
+                        <h5 class="correctans">Correct Answer! Your answer was: <%=answerForThisQuestion.toUpperCase()%></h5>
+                    <% } else { %>
+                        <h5 class="wrongans">Sorry! Your answer was: <%=answerForThisQuestion.toUpperCase()%> and incorrect :(</h5>
+                    <% } %>
+                    <%questionNumber++;%>
+                <% });%>
+                
+                Final Score is: <%=finalScore%><br>
+                <a href="/landing" class="custombtn">Back To Landing</a>
+            </div>
+        </div>
+    </body>
 
 <%- include ('templates/footer'); -%>

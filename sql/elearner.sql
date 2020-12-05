@@ -126,6 +126,11 @@ CREATE TABLE `quizAttempts` ( -- records past quiz attempts. feel free to add an
   `quizAttemptId` mediumint(97) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userId` mediumint(9) NOT NULL,
   `testScore` float(5,2) NOT NULL,
+  `numRightAns` mediumint(9) NOT NULL,
+  `totalQuestions` mediumint(9) NOT NULL,
+  `gradeLvl` mediumint(9),
+  `diff` mediumint(10),
+  `category` varchar(25),
   `submissionDate` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
