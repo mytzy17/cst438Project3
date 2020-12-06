@@ -1,6 +1,10 @@
 const express = require('express');
 const router = express.Router();
 
+/*
+global connection comment below is there to enable the route js files to reach
+and use the connection DB
+*/
 
 /* global connection */
 router.get('/:gid', (req, res) => {

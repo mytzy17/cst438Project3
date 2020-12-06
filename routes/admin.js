@@ -1,6 +1,12 @@
 const express = require('express');
 const router = express.Router();
 var bcrypt = require('bcrypt');
+
+/*
+global connection comment below is there to enable the route js files to reach
+and use the connection DB
+*/
+
 /* global connection */
 
 function isAuthenticated(req, res, next) {
