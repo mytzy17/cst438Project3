@@ -6,7 +6,7 @@
         <h2>Grade Level: <%=grade%></h2>
         <%var questionNumber = 1; %>
         
-        <form action="/submittest" method="POST">
+        <form action="/quiz/submit" method="POST">
             <%qList.forEach(function(q) {%>
                 <h5> <%=q.question%></h5> <br>
                 <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" required>
