@@ -102,6 +102,7 @@ function checkPassword(password, hash) {
 
 /* Home route */
 app.get('/', (req, res) => {
+    console.log("The time now is" + new Date());
     res.render('home');
 });
 
