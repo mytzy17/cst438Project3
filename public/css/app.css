@@ -496,6 +496,9 @@ a:hover, a:active {
 /*added code for user*/
 .userPage{
     background: -webkit-linear-gradient(left, #3931af, #00c6ff);
+    -webkit-font-smoothing: antialiased;
+      font: normal 20px Roboto,arial,sans-serif;
+      font-family: 'Mansalva', cursive;
 }
 .emp-profile{
     padding: 3%;
