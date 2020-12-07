@@ -377,7 +377,7 @@ a:hover, a:active {
     box-shadow:0 1px 0 #cfcfcf;
 }
 .backgroundGrade1{
-  background-image:url('https://i.gifer.com/9Y9F.gif');
+  background-image:url('https://www.learnupon.com/wp-content/uploads/@2x-Blog-Adapting-to-Online-Training-animation.gif');
   background-position:center;
   background-size:cover;
   
@@ -385,12 +385,31 @@ a:hover, a:active {
   font: normal 20px Roboto,arial,sans-serif;
   font-family: 'Mansalva', cursive;
 }
+.aboutus-title2 {
+    font-size: 30px;
+    letter-spacing: 0;
+    line-height: 32px;
+    margin: 0 0 39px;
+    padding: 0 0 11px;
+    position: relative;
+    text-transform: uppercase;
+    color: #726977;
+}
+.aboutus-title2::after {
+    background: #fdb801 none repeat scroll 0 0;
+    bottom: 0;
+    content: "";
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 54px;
+}
 .aboutus-text2 {
     color: #c705e6;
     font-size: 25px;
     line-height: 22px;
     margin: 0 0 35px;
-    background-color: #1cd94e;
+    background-color: #61ece0;
 }
 .flip-card {
   background-color: transparent;
