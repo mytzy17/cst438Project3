@@ -2,7 +2,7 @@ li {
   display: inline;
 }
 #backgroundLogin{
-  background-image:url('https://images.pexels.com/photos/159650/paint-notebook-brush-pencil-159650.jpeg');
+  background-image:url('https://wallpaperaccess.com/full/806819.jpg');
   background-position:center;
   background-size:cover;
   
@@ -59,7 +59,7 @@ h4 {
     text-align: center;
 }
 #backgroundRegister{
-    background-image:url('https://www.impactteachers.com/wp-content/uploads/2017/11/Chalkboard-with-Stationary-1.jpg');
+    background-image:url('https://images8.alphacoders.com/841/841718.jpg');
   background-position:center;
   background-size:cover;
   
@@ -103,6 +103,12 @@ h4 {
 .banner .nav li a{
 	color:#aaa;
 	font-size: 1.2em;
+}
+.navbar-custom { 
+    background-color: white; 
+}
+.navbar{
+    color: #741ba4;
 }
 .banner .info{
 	margin-top:15%;
@@ -200,7 +206,7 @@ h4 {
   font-size: 20px;
 }
 #backgroundAdminLogin{
-  background-image:url('https://cdn.hipwallpaper.com/i/8/68/1r0eK8.jpg');
+  background-image:url('https://motionarray.imgix.net/preview-286314-3qv151pW0F-high_0011.jpg');
   background-position:center;
   background-size:cover;
   
@@ -627,7 +633,7 @@ a:hover, a:active {
   text-align: center;
 }
 #backgroundQuiz{
-  background-image:url('https://i.pinimg.com/originals/8c/a7/94/8ca7942124a5d4d9cf93a4dab091d9a7.jpg');
+  background-image:url('https://i.pinimg.com/originals/d8/c1/c9/d8c1c9e586dae22afbf53a9a73818710.jpg');
   background-position:center;
   background-size:cover;
   
