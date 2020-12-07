@@ -18,7 +18,7 @@ li {
     padding: 110px;
 }
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-    color: #ffffff!important;
+    color: red!important;
     opacity: 1; /* Firefox */
     font-size:18px!important;
 }
@@ -599,4 +599,25 @@ a:hover, a:active {
 
 .wrongans {
     font-weight: 600;
+}
+/*Quiz*/
+.quizTitle{
+    font-family: 'Shrikhand', cursive;
+  font-size: 20px;
+  text-align: center;
+}
+#backgroundQuiz{
+  background-image:url('https://i.pinimg.com/originals/8c/a7/94/8ca7942124a5d4d9cf93a4dab091d9a7.jpg');
+  background-position:center;
+  background-size:cover;
+  
+  -webkit-font-smoothing: antialiased;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
+}
+.question{
+font-family: 'Shrikhand', cursive;
+  font-size: 20px;
+  color: #1d4040!important;
+  background-color: #ccffff!important;
 }
