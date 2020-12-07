@@ -1,21 +1,33 @@
 <%- include ('templates/header'); -%>
 <%- include ('templates/navbar2'); -%>
-    <body>
-        <h2>Subject: <%=category%></h2>
-        <h2>Difficulty: <%=difficulty%></h2>
-        <h2>Grade Level: <%=grade%></h2>
-        <%var questionNumber = 1; %>
-        
-        <form action="/quiz/submit" method="POST">
-            <%qList.forEach(function(q) {%>
-                <h5> <%=q.question%></h5> <br>
-                <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" required>
-                <span id="questionAnswer<%=questionNumber%>" hidden><%=q.answer%></span>
-                <%questionNumber++;%>
-            <% });%>
-            <br>
-            <button>Submit Test</button>
-        </form>
+    <body id="backgroundQuiz">
+        <div class="container">
+          <div class="list-group quizTitle">
+            <a class="list-group-item list-group-item-success">Subject: <%=category%></a>
+            <a class="list-group-item list-group-item-info">Difficulty: <%=difficulty%></a>
+            <a class="list-group-item list-group-item-warning">Grade Level: <%=grade%></a>
+          </div>
+            <%var questionNumber = 1; %>
+            
+            <form action="/quiz/submit" method="POST">
+                <%qList.forEach(function(q) {%>
+                    <div class="list-group">
+                        <a class="list-group-item active question">
+                          <h4 class="list-group-item-heading"><%=q.question%></h4>
+                        </a>
+                        <input type="text" placeholder="Type in answer" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" required>
+                        <span id="questionAnswer<%=questionNumber%>" hidden><%=q.answer%></span>
+                        <%questionNumber++;%>
+                        </div>
+                <% });%>
+                <br>
+                <div class="wrapper">
+                    <span class="group-btn">
+                        <button class="btn-outline-primary btn-lg">submit <i class="fa fa-sign-in"></i></button>
+                    </span>
+                </div>
+            </form>
+        </div>
         
     </body>
 <%- include ('templates/footer'); -%>
