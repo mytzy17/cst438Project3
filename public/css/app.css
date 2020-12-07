@@ -592,3 +592,11 @@ a:hover, a:active {
     font-weight: 600;
     color: #0062cc;
 }
+
+.correctans {
+    font-weight: 600;
+}
+
+.wrongans {
+    font-weight: 600;
+}
