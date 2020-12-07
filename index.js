@@ -137,8 +137,8 @@ app.get('*', (req, res) => {
     res.render('error');
 });
 
-app.listen(process.env.PORT || 3000, function() {
-    console.log('Server has been started');
+app.listen(process.env.PORT || 3000, () => {
+    console.log(`Server has been started on port ${3000}`);
 });
 
 //returns the date in mm-dd-yyyy format. Might be obsolete
