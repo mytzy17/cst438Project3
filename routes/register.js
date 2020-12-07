@@ -12,8 +12,16 @@ and use the connection DB
 /* Register Routes */
 router
     .get('/', (req, res) => {
-        res.render('register');
+        res.render('register', {userErrMsg: "", pwErrMsg: ""});
     }).post('/', async(req, res) => { /* Register Post Method */
+        let checkUser = await checkUsername(req.body.username);
+        console.log(checkUser.length + " is length found!!!");
+        if (checkUser.length > 0) {
+            console.log("Taken username")
+            let errorMessage = "This username is already taken.";
+            res.render('register', {userErrMsg: errorMessage, pwErrMsg: ""});
+            return;
+        }
         let salt = 10;
         let newPassword = req.body.password.toString();
         bcrypt.hash(newPassword, salt, function(error, hash) {
@@ -27,5 +35,15 @@ router
             });
         });
     });
+
+function checkUsername(username) {
+    let stmt = 'SELECT * FROM users WHERE username=?';
+    return new Promise(function(resolve, reject) {
+        connection.query(stmt, [username], function(error, results) {
+            if (error) throw error;
+            resolve(results);
+        });
+    });
+}
 
 module.exports = router;
