@@ -12,7 +12,7 @@ and use the connection DB
 /* Login Routes */
 router
     .get('/', (req, res) => {
-        res.render('login');
+        res.render('login', { error: false });
     }) 
     .post('/', async(req, res) => { /* login post method */
         let isUserExist = await checkUsername(req.body.username);

@@ -9,6 +9,9 @@
                         <h4 class="smoltitle">Register</h4>
                         </br>
                         <input type="text" id="username" class="form-control input-sm chat-input" name = "username" placeholder="Enter username" required/>
+                        <%if(userErrMsg.length) {%>
+                            <p><%=userErrMsg%></p>
+                        <% } %>
                         </br></br>
                         <input type="password" id="password" class="form-control input-sm chat-input" name = "password" placeholder="*******" required/>
                         </br></br>

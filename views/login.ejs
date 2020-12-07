@@ -12,6 +12,9 @@
                     <input type="text" id="username" class="form-control input-sm chat-input" name = "username" placeholder="Enter username" required/>
                     </br></br>
                     <input type="password" id="password" class="form-control input-sm chat-input" name = "password" placeholder="*******" required/>
+                    <% if(error) { %>
+                        <p style='color:red;'>Password Incorrect</p>
+                    <% } %>
                     </br></br>
                     <div class="wrapper">
                             <span class="group-btn">

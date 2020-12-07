@@ -16,7 +16,8 @@ function isAuthenticated(req, res, next) {
 /*landing page after successful log in */
 router.get('/', isAuthenticated, (req, res) => {
     let u_id = req.session.user_id;
-    let u_name = req.session.username;
+    let u_name = req.session.user;
+    console.log("user ID: " + u_id + " and username: " + u_name);
     res.render('landing', { userId: u_id, username: u_name });
 });
 

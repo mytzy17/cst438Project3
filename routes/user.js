@@ -13,9 +13,10 @@ function isAuthenticated(req, res, next) {
     else next();
 }
 
-router.get('/:uid', isAuthenticated, (req, res) => {
+router.get('/:uname', isAuthenticated, (req, res) => {
     console.log("User page");
-    var stmt = 'SELECT * FROM users where userId = ' + req.params.uid + ';';
+    console.log("params username: " + req.params.uname);
+    var stmt = 'SELECT * FROM users where username = \'' + req.params.uname + '\';';
     connection.query(stmt, function(error, result) {
         if (result.length) {
             if (error) throw error;
@@ -47,7 +48,7 @@ router.post('/:uid/updatepicture', isAuthenticated, (req, res) => {
             let stmt = 'update users set profile_img=\'' + img_name + '\' where userId = ' + req.session.user_id + ";";
             connection.query(stmt, function(err, result) {
                 if (err) throw err;
-                res.redirect('/user/' + req.session.user_id);
+                res.redirect('/user/' + req.session.user);
             })
         })
     }
@@ -60,7 +61,7 @@ router.post('/:uid/updateemail', isAuthenticated, (req, res) => {
         console.log("Query update Started");
         console.log("reached here!");
         if (error) throw error;
-        res.redirect('/user/' + req.session.user_id);
+        res.redirect('/user/' + req.session.user);
     });
 });
 
