@@ -1,24 +1,38 @@
 <%- include ('templates/header'); -%>
 <%- include ('templates/navbar2'); -%>
 
-    <body>
+    <body id="backgroundResults">
         <% var questionNumber = 1; %>
         <br><br><br><br><br><br>
         <div class="container-fluid banner">
             <div class="jumbotron">
                 <%quizData.forEach( (q, index) => {%>
                 <% let answerForThisQuestion = userAns[index] %>
-                    <h5> <%=q.question%></h5> <br>
+                    <div class="panel panel-primary">
+                      <div class="panel-heading"><%=q.question%></div>
+                    </div>
+                    <br>
                     The correct answer was: <input type="text" id="questionNumber<%=questionNumber%>" name="questionNumber<%=questionNumber%>" class="userInput" value="<%=q.answer%>" disabled="true" required>
                     <% if(q.answer == answerForThisQuestion){ %>
-                        <h5 class="correctans">Correct Answer! Your answer was: <%=answerForThisQuestion.toUpperCase()%></h5>
+                        <div class="panel panel-success" class="correctans">
+                          <div class="panel-heading">Correct Answer! Your answer was: <%=answerForThisQuestion.toUpperCase()%>
+                          <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Happy_Emoji_Icon_5c9b7b25-b215-4457-922d-fef519a08b06_1024x1024.png?v=1571606090" width="15px" height="15px"/>
+                          <img src="https://upload.wikimedia.org/wikipedia/en/e/e4/Green_tick.png" width="15px" height="15px"/></div>
+                        </div>
                     <% } else { %>
-                        <h5 class="wrongans">Sorry! Your answer was: <%=answerForThisQuestion.toUpperCase()%> and incorrect :(</h5>
+                        <div class="panel panel-danger" class="wrongans">
+                          <div class="panel-heading">Sorry! Your answer was: <%=answerForThisQuestion.toUpperCase()%> and incorrect
+                          <img src="https://cdn.shopify.com/s/files/1/1061/1924/products/Very_sad_emoji_icon_png_grande.png?v=1571606089" width="15px" height="15px"/>
+                          <img src="https://lh3.googleusercontent.com/proxy/wuqsEFJ-otFPLhThWPQPR-FiMDQGs1pYYDoOl0CLifLxSuWCVA8LmyCGn4EjM-xQHsGGiHwIka7OLB0GPyr4AXFAwiNKrtM" width="15px" height="15px"/></div>
+                        </div>
                     <% } %>
                     <%questionNumber++;%>
                 <% });%>
                 
-                Final Score is: <%=finalScore%><br>
+                <div class="panel panel-success">
+                  <div class="panel-heading">Final Score is: <%=finalScore%></div>
+                </div>
+                <br>
                 <a href="/landing" class="custombtn">Back To Landing</a>
             </div>
         </div>

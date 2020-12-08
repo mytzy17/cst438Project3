@@ -652,3 +652,12 @@ font-family: 'Shrikhand', cursive;
   color: #1d4040!important;
   background-color: #ccffff!important;
 }
+#backgroundResults{
+  /*background-image:url('https://wallpaperaccess.com/full/806819.jpg');*/
+  /*background-position:center;*/
+  /*background-size:cover;*/
+  
+  -webkit-font-smoothing: antialiased;
+  font: normal 20px Roboto,arial,sans-serif;
+  font-family: 'Mansalva', cursive;
+}
