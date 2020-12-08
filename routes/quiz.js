@@ -47,9 +47,13 @@ router.get('/', isAuthenticated, (req, res) => {
     up due to the query happening here. Should probably move to post method
     gotoquiz but that is not priority now.
     ***/
+    let isEmpty = false;
     console.log(qList);
     quizData = qList;
-    res.render('quiz', { qList: qList, category: userChosenCat, difficulty: userChosenDiff, grade: userChosenGradeLvl });
+    if(!qList.length) {
+        isEmpty = true;
+    }
+    res.render('quiz', { qList: qList, category: userChosenCat, difficulty: userChosenDiff, grade: userChosenGradeLvl, isEmpty: isEmpty });
 })
 
 function computePct(rightAns, totalQs) {
@@ -71,7 +75,7 @@ function calculate(userAnswers, quizData, quizLength) {
     quizData.forEach(function(q) {
         console.log("Correct answer: " + q.answer);
         console.log("Your answer: " + answerArray[num]);
-        if (q.answer == answerArray[num]) {
+        if (q.answer.toLowerCase() == answerArray[num].toLowerCase()) {
             rightAnswers++;
         }
         num++;

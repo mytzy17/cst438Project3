@@ -8,7 +8,9 @@
             <a class="list-group-item list-group-item-warning">Grade Level: <%=grade%></a>
           </div>
             <%var questionNumber = 1; %>
-            
+            <% if(isEmpty){ %>
+                <p style='background-color: coral;'>No questions found with those parameters.</p>    
+            <% } %>
             <form action="/quiz/submit" method="POST">
                 <%qList.forEach(function(q) {%>
                     <div class="list-group">
@@ -22,11 +24,20 @@
                 <% });%>
                 <br>
                 <div class="wrapper">
+                    <% if(!isEmpty){ %>
                     <span class="group-btn">
                         <button class="btn-outline-primary btn-lg">submit <i class="fa fa-sign-in"></i></button>
                     </span>
+                    <% } %>
                 </div>
             </form>
+            <% if(isEmpty){ %>
+                <form action="/landing" method="GET">
+                    <span class="group-btn">
+                        <button class="btn-outline-primary btn-lg">go back to landing<i class="fa fa-sign-in"></i></button>
+                    </span>
+                </form>
+            <% } %>
         </div>
         
     </body>
