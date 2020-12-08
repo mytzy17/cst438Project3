@@ -13,6 +13,13 @@ function isAuthenticated(req, res, next) {
     else next();
 }
 
+function isUser(sessionName, profileName) {
+    if (sessionName == profileName) {
+        return true;
+    }
+    return false;
+}
+
 router.get('/:uname', isAuthenticated, (req, res) => {
     console.log("User page");
     console.log("params username: " + req.params.uname);
@@ -21,12 +28,23 @@ router.get('/:uname', isAuthenticated, (req, res) => {
         if (result.length) {
             if (error) throw error;
             let userInfo = result[0];
-            res.render('userprofile', { userInfo: userInfo });
+            if(isUser(req.session.user, req.params.uname)) {
+                res.render('userprofile', { userInfo: userInfo, isUser: true });
+            } else {
+                res.render('userprofile', { userInfo: userInfo, isUser: false })
+            }
         }
     });
 });
 
-router.post('/:uid/updatepicture', isAuthenticated, (req, res) => {
+router.post('/:uname/updatepicture', isAuthenticated, (req, res) => {
+    console.log("Session username: " + req.session.user);
+    console.log("Profile username: " + req.params.uname);
+    if(!isUser(req.session.user, req.params.uname)) {
+        console.log("not the same user")
+        res.redirect('/user/' + req.session.user);
+        return;
+    }
     let randNum1 = Math.floor(100000 + Math.random() * 90000000);
     let randNum2 = Math.floor(100000 + Math.random() * 90000000);
     console.log(req.files);
@@ -54,7 +72,11 @@ router.post('/:uid/updatepicture', isAuthenticated, (req, res) => {
     }
 })
 
-router.post('/:uid/updateemail', isAuthenticated, (req, res) => {
+router.post('/:uname/updateemail', isAuthenticated, (req, res) => {
+    if(!isUser(req.session.user, req.params.uname)) {
+        res.redirect('/user/' + req.session.user);
+        return;
+    }
     console.log("User page");
     var stmt = 'update users set email = \'' + req.body.email + '\' where userId=' + req.session.user_id + ';';
     connection.query(stmt, function(error, result) {
@@ -65,7 +87,11 @@ router.post('/:uid/updateemail', isAuthenticated, (req, res) => {
     });
 });
 
-router.get('/:uid/updateemail', (req, res) => {
+router.get('/:uname/updateemail', (req, res) => {
+    if(!isUser(req.session.user, req.params.uname)) {
+        res.redirect('/user/' + req.session.user);
+        return;
+    }
     var stmt = 'SELECT * FROM users where userId = ' + req.session.user_id + ';';
     connection.query(stmt, function(error, result) {
         if (result.length) {
