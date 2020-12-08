@@ -3,22 +3,25 @@
 <body class = "userPage">
 <div class="container emp-profile">
             <!--<form method="post">-->
-            <form action='/user/<%=userInfo.userId%>/updatepicture' method='POST' enctype="multipart/form-data">
+            <form action='/user/<%=userInfo.username%>/updatepicture' method='POST' enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                             <div>
                             <img alt="User Pic" src="/images/uploaded_images/<%=userInfo.profile_img%>">
                             </div>
+                                <% if(isUser) {%>
                                 <div class="file btn btn-lg btn-primary">
                                     Change Photo
                                     <input class="form-control" type="file" name="uploaded_image" accept=""/>
                                 </div>
                                 <div>
                                 <button type="submit" class='button btn'>Update Profile Picture</button>
-                                </div>
-                        </div>
+                                <% } %>
+                            </div>
+                                
                     </div>
+                </div>
             </form>
                     <div class="col-md-6">
                         <div class="profile-head">
@@ -41,7 +44,9 @@
                     
                     <div class="col-md-2">
                         <!--<input ty'pe="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>-->
-                        <a href='/user/:uid/updateemail' class='profile-edit-btn'>Edit Profile</a>
+                        <% if(isUser) {%>
+                        <a href='/user/<%=userInfo.username%>/updateemail' class='profile-edit-btn'>Edit Profile</a>
+                        <% } %>
                     </div>
                     
                     
