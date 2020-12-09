@@ -94,9 +94,9 @@ router.post('/submit', isAuthenticated, (req, res) => {
     console.log("pct: ", pct);
     let dateNow = new Date();
     console.log("Current Date MM/DD/YYYY: " + dateNow);
-    let stmt = "INSERT INTO quizAttempts (userId, testScore, numRightAns, totalQuestions," +
-        "gradeLvl, diff, category, submissionDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-    let data = [req.session.user_id, pct, rightAns, totalQuestions, userChosenGradeLvl, userChosenDiff, userChosenCat, dateNow.toString()];
+    let stmt = "INSERT INTO quizAttempts (userId, username, testScore, numRightAns, totalQuestions," +
+        "gradeLvl, diff, category, submissionDate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    let data = [req.session.user_id, req.session.user, pct, rightAns, totalQuestions, userChosenGradeLvl, userChosenDiff, userChosenCat, dateNow.toString()];
 
     connection.query(stmt, data, function(err, result) {
         if (err) throw err;

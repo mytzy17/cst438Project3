@@ -3,12 +3,12 @@
 <body class = "userPage">
 <div class="container emp-profile">
             <!--<form method="post">-->
-            <form action='/user/<%=userInfo.username%>/updatepicture' method='POST' enctype="multipart/form-data">
+            <form action='/user/<%=userInfo[0].username%>/updatepicture' method='POST' enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
                             <div>
-                            <img alt="User Pic" src="/images/uploaded_images/<%=userInfo.profile_img%>">
+                            <img alt="User Pic" src="/images/uploaded_images/<%=userInfo[0].profile_img%>">
                             </div>
                                 <% if(isUser) {%>
                                 <div class="file btn btn-lg btn-primary">
@@ -26,7 +26,7 @@
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5 id = 'userName' class = "userNombre">
-                                        <%=userInfo.username%>
+                                        <%=userInfo[0].username%>
                                     </h5>
                                     <h6>
                                         
@@ -34,6 +34,9 @@
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#records" role="tab" aria-controls="home" aria-selected="true">Records</a>
                                 </li>
                                 <!--<li class="nav-item">-->
                                 <!--    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>-->
@@ -45,7 +48,7 @@
                     <div class="col-md-2">
                         <!--<input ty'pe="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>-->
                         <% if(isUser) {%>
-                        <a href='/user/<%=userInfo.username%>/updateemail' class='profile-edit-btn'>Edit Profile</a>
+                        <a href='/user/<%=userInfo[0].username%>/updateemail' class='profile-edit-btn'>Edit Profile</a>
                         <% } %>
                     </div>
                     
@@ -62,7 +65,7 @@
                                                 <label>Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <%=userInfo.username%>
+                                                <%=userInfo[0].username%>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -70,7 +73,31 @@
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <%=userInfo.email%>
+                                                <%=userInfo[0].email%>
+                                            </div>
+                                        </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="records" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Quiz Attempts</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <%=list.length%>
+                                                <li>
+                                                    <%list.forEach( (l) => { %>
+                                                        <ul>quizAttemptId = <%=l.quizAttemptId%></ul>
+                                                        <ul>quizScore = <%=l.testScore%></ul>
+                                                    <% });%>
+                                                </li>
                                             </div>
                                         </div>
                             </div>

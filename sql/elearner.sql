@@ -114,9 +114,9 @@ INSERT INTO `totalQuestions` (`questionId`, `difficulty`, `category`, `image`, `
 (69, 5, 'Math', '', '5 x 6 x 3 = a. 18 b. 15 c. 30 d. 90', 'd', 4),
 (70, 6, 'Math', '', 'There are 61 boxes of pencils in a store. There are 14 pencils in each box. How many pencils are in the store? a. 854 b. 4 c. 75 d. 47', 'a', 4),
 (71, 7, 'Math', '', 'There are 24 hours in one day, and 3600 seconds in one hour. How many seconds are in one day? a. 7000 b. 864 c. 72000 d. 86400', 'd', 4),
-(71, 8, 'Math', '', 'What is n if 9 x n = 108 a. 22 b. 15 c. 12 d. 13', 'c', 4),
-(71, 9, 'Math', '', 'What is S if 6 x 4 = 3 x S? a. 8 b. 6 c. 4 d. 24', 'a', 4),
-(71, 10, 'Math', '', '124 x 100 = a. 1,240 b. 12,400 c. 1,200 d. 1,000', 'b', 4);
+(72, 8, 'Math', '', 'What is n if 9 x n = 108 a. 22 b. 15 c. 12 d. 13', 'c', 4),
+(73, 9, 'Math', '', 'What is S if 6 x 4 = 3 x S? a. 8 b. 6 c. 4 d. 24', 'a', 4),
+(74, 10, 'Math', '', '124 x 100 = a. 1,240 b. 12,400 c. 1,200 d. 1,000', 'b', 4);
 
 
 --
@@ -134,6 +134,7 @@ DROP TABLE IF EXISTS `quizAttempts`;
 CREATE TABLE `quizAttempts` ( -- records past quiz attempts. feel free to add anything to it
   `quizAttemptId` mediumint(97) NOT NULL PRIMARY KEY AUTO_INCREMENT,
   `userId` mediumint(9) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `testScore` float(5,2) NOT NULL,
   `numRightAns` mediumint(9) NOT NULL,
   `totalQuestions` mediumint(9) NOT NULL,

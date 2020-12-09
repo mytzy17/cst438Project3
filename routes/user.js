@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+// var connection = mysql.createConnection({multipleStatements: true});
+
 /*
 global connection comment below is there to enable the route js files to reach
 and use the connection DB
@@ -24,14 +26,20 @@ router.get('/:uname', isAuthenticated, (req, res) => {
     console.log("User page");
     console.log("params username: " + req.params.uname);
     var stmt = 'SELECT * FROM users where username = \'' + req.params.uname + '\';';
+    stmt += 'SELECT * FROM quizAttempts WHERE username = \'' + req.params.uname + '\';';
+    // var stmt2 = 'SELECT * FROM quizAttempts NATURAL JOIN users WHERE quizAttempts.userId = users.userId;';
     connection.query(stmt, function(error, result) {
         if (result.length) {
             if (error) throw error;
+            console.log(result[0]);
+            console.log(result[1]);
+            // console.log(result[1]);
             let userInfo = result[0];
+            let listOfQuizAttempts = result[1];
             if(isUser(req.session.user, req.params.uname)) {
-                res.render('userprofile', { userInfo: userInfo, isUser: true });
+                res.render('userprofile', { userInfo: userInfo, isUser: true, list: listOfQuizAttempts});
             } else {
-                res.render('userprofile', { userInfo: userInfo, isUser: false })
+                res.render('userprofile', { userInfo: userInfo, isUser: false, list: listOfQuizAttempts});
             }
         }
     });
