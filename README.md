@@ -22,6 +22,7 @@ Link to heroku-running app:
 * [x] Git
 * [x] Mysql
 * [x] JawsDB
+* [x] Heroku
 
 
 ### Iteration 1
@@ -32,6 +33,10 @@ Link to heroku-running app:
 
 **User Story:** Broke everything LOL by Miguel
 
+**User Story:** Set up Frontend/HTML of home, about, grades, register, login, admin by Mytzy:
+> I worked on the implementation of the frontend and HTML of the following pages using BootStrap 4.
+> In addition to that I also implemented the navbar so the user could be able to access multiple pages and browse around. 
+
 ### Iteration 2
 
 **User Story:** Set up basic question manipulation in admin by Roober:
@@ -40,6 +45,11 @@ Link to heroku-running app:
 > I also added a view questions modal window that displays all questions in the database.
 
 **User Story:** Broke everything LOL by Miguel
+
+**User Story:** Modified the backend of navbar and landing page by Mytzy:
+> I modified the navbar implementation code due to that there were minor changes that I needed to add 
+> so it could be user friendly. Then created a second navbar ejs file so once the user logged in, the sign in page and login page
+> would not show up in the navbar no more.
 
 ### Iteration 3
 
@@ -50,6 +60,9 @@ opens up a modal where you can choose your options. I also implemented the quiz 
 submission of the quiz to the DB. 
 
 **User Story:** Broke everything LOL by Miguel
+
+**User Story:** Modified the backend/frontend of navbar, landing page, grades page by Mytzy:
+> 
 
 ### Iteration 4
 
