@@ -17,7 +17,7 @@ Link to heroku-running app:
 * [x] Admin users can also see user information.
 
 **USES**:
-* [x] Express API
+* [x] Express
 * [x] EJS
 * [x] Git
 * [x] Mysql
