@@ -1,0 +1,6 @@
+mysql://ld1x8mutxqkwc5kr:e9zn7r4b4z4ztr3f@sh4ob67ph9l80v61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/qwmh0mvggxue8vyf
+username = ld1x8mutxqkwc5kr
+password = e9zn7r4b4z4ztr3f
+host = sh4ob67ph9l80v61.cbetxkdyhwsb.us-east-1.rds.amazonaws.com
+port = 3306
+database = qwmh0mvggxue8vyf
