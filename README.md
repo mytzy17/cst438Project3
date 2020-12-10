@@ -83,7 +83,7 @@ the user's profile picture.
 
 **User Story:** Broke everything like always LMAo by Miguel
 
-**User Story:** Frontend/Backend work on user profile, quiz, and result pages, edit profile by Mytzy:
+**User Story:** Frontend/Backend work on user profile, quiz, result page, and edit profile pages by Mytzy:
 > In the last iteration of the project I implemented and designed the following pages. I made the user profile look more nicer as in rearranging the outputed 
 > information that needed to be display as well as creating a button in order for the user to be able to edit their profile.
 > Also I rearranged div elements and designed so the outputted information in both quiz and result page could look presentable.
