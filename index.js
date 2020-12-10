@@ -47,7 +47,7 @@ function connectToDB() {
 // }
 
 let connection = connectToDB();
-// connection.connect(); // This is for JAawsDB
+connection.connect(); // This is for JAawsDB
 
 
 //For tutorial on routes: https://www.youtube.com/watch?v=iM_S4RczozU
