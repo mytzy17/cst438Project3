@@ -23,27 +23,31 @@ app.use(session({
 }));
 app.set('view engine', 'ejs');
 
-// const connection = mysql.createConnection({
-//     host: process.env.HOST,
-//     user: process.env.USERNAME,
-//     password: process.env.PASSWORD,
-//     database: process.env.DATABASE,
-//     multipleStatements: true
-// });
-
 function connectToDB() {
-    let connection = mysql.createConnection({
-        host: 'localhost',
-        user: 'roob', // these probably need to be changed
-        password: 'roob', // these probably need to be changed
-        database: 'elearner', // these probably need to be changed
+    const connection = mysql.createConnection({
+        host: process.env.HOST,
+        user: process.env.USERNAME,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE,
         multipleStatements: true
     });
     return connection;
 }
 
+
+// function connectToDB() {
+//     let connection = mysql.createConnection({
+//         host: 'localhost',
+//         user: 'roob', // these probably need to be changed
+//         password: 'roob', // these probably need to be changed
+//         database: 'elearner', // these probably need to be changed
+//         multipleStatements: true
+//     });
+//     return connection;
+// }
+
 let connection = connectToDB();
-// connection.connect(); // This is for JAawsDB
+connection.connect(); // This is for JAawsDB
 
 
 //For tutorial on routes: https://www.youtube.com/watch?v=iM_S4RczozU
