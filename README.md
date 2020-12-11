@@ -37,7 +37,9 @@ Link to heroku-running app:
 > I worked on the implementation of the frontend and HTML of the following pages using BootStrap 4.
 > In addition to that I also implemented the navbar so the user could be able to access multiple pages and browse around. 
 
-**User Story:** Info here by Carmelo:
+**User Story:** Setup the HTML pages of English, Science, and Math by Carmelo:
+> I have started the implementation of the English, Science, and Math pages using HTML, 
+> then I converted these pages to ejs. Also, I did some changes to the app.css file.
 
 ### Iteration 2
 
@@ -53,7 +55,9 @@ Link to heroku-running app:
 > so it could be user friendly. Then created a second navbar ejs file so once the user logged in, the sign in page and login page
 > would not show up in the navbar no more.
 
-**User Story:** Info here by Carmelo:
+**User Story:** Implementation of the travis.yml file by Carmelo:
+> In this iteration, I created the travis.yml file to check the test deployment every time
+> that we pushed code to GitHub. Also, I completed the English, Science, and Math pages.
 
 ### Iteration 3
 
@@ -70,7 +74,8 @@ submission of the quiz to the DB.
 > Also the grades ejs files were modified and implemented into one grade ejs file so their wouldn't be so many of them. Also the template
 > of the landing page and nav bar was modified in order to be more user friendly.
 
-**User Story:** Info here by Carmelo:
+**User Story:** Modified elearner.sql by Carmelo:
+> In this iteration, I was working in the backend in the elearner.sql. and I added the questions and answers for English, Science, and Math from grades 1 to 6.
 
 ### Iteration 4
 
@@ -88,4 +93,5 @@ the user's profile picture.
 > information that needed to be display as well as creating a button in order for the user to be able to edit their profile.
 > Also I rearranged div elements and designed so the outputted information in both quiz and result page could look presentable.
 
-**User Story:** Info here by Carmelo:
+**User Story:** Modified user profile page by Carmelo:
+> For this last iteration, I added other information rows in the user profile page to show a summary of the quizzes taken from the users when they click on the tab records. 
