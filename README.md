@@ -94,7 +94,7 @@ Link to heroku-running app:
 >which will be stored into the DB. I also implemented a file upload for images for
 >the user's profile picture.
 
-**User Story:** Avatar addition for userprofile HTML/CSS/backend/userprofile records:
+**User Story:** Avatar addition for userprofile HTML/CSS/backend/userprofile records by Miguel:
 >For the final iteration, I worked on the avatar idea for our userprofile. Essentially the idea was to have an 
 >avatar for every user to be able to "evolve" as they got more and more correct answers in quizzes. An example being
 >if they reach 10 correct questions their avatar will evolve and so on. Unfortunately, this idea was scrapped in the end
