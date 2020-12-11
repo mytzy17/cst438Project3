@@ -101,10 +101,11 @@ Link to heroku-running app:
 >because it would've led to further bugs that we did not want to risk in order to prioritze the other functionality of project.
 >Lastly, in userprofile I implemented a separate tab in which we would show the users passed tests, correct answers and the ID of that specific test.
 
-**User Story:** Frontend/Backend work on user profile, quiz, result page, and edit profile pages by Mytzy:
+**User Story:** Frontend/Backend work on user profile, quiz, result page, and edit profile pages, JawsDB by Mytzy:
 > In the last iteration of the project I implemented and designed the following pages. I made the user profile look more nicer as in rearranging the outputed 
 > information that needed to be display as well as creating a button in order for the user to be able to edit their profile.
-> Also I rearranged div elements and designed so the outputted information in both quiz and result page could look presentable.
+> Also I rearranged div elements and designed so the outputted information in both quiz and result page could look presentable. 
+> Finally, I created the JawsDB in order to publish our webpage into heroku.
 
 **User Story:** Modified user profile page by Carmelo:
 > For this last iteration, I added other information rows in the user profile page to show a summary of the quizzes taken from the users when they click on the tab records. 
